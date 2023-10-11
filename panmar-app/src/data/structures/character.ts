@@ -27,3 +27,15 @@ enum CharacterOrigins{
     LichKingdom,
     TurtleIslands,
 }
+
+interface LivingCharacter{
+    characterInfo: LivingCharacter,
+    lifeDices: number,
+    manaDices: number,
+    talentPoints: number
+    maxLife: number,
+    currentLife: number,
+    maxMana:number,
+    currentMana: number,
+    knowledge: number
+}
