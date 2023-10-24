@@ -34,7 +34,7 @@ enum CharacterOrigins{
 }
 
 interface LivingCharacter{
-    characterInfo: LivingCharacter,
+    characterInfo: Character,
     lifeDices: number,
     manaDices: number,
     talentPoints: number
@@ -44,3 +44,5 @@ interface LivingCharacter{
     currentMana: number,
     knowledge: number
 }
+
+export default LivingCharacter
