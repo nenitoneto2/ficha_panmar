@@ -1,0 +1,31 @@
+enum PlayableSpecies{
+    Humans,
+    HighElves,
+    Dwarfs,
+    Goblins,
+    Halflings,
+    Gnomes,
+    Gigants,
+    Orks,
+    Orochis,
+    Nightlings,
+    WoodElves,
+    DarkElves,
+    TropicalElves,
+    Golens,
+    Triton,
+    Simians,
+    Draconian,
+    Reptilians,
+    Felines,
+    Vampires,
+    Kaiwus,
+    HalfElves,
+    RedOrks,
+    Krakens,
+    Hanaku,
+    HalfMonsters,
+    Undeads
+}
+
+export default PlayableSpecies
