@@ -6,9 +6,10 @@ import Symbols from './symbols'
 import Proficiencies from './proficiencies'
 import CombatStyles from './combatstyles'
 import Magic from './magic'
+import PlayableSpecies from './species'
 
 interface Character {
-    speicie: String,
+    speicie: PlayableSpecies,
     element: MagicElement,
     rank: Rank,
     combatant: number,
