@@ -1,4 +1,4 @@
-function rollDice(numDice: number, numFaces: number, modifier: number): number {
+function RollDice(numDice: number, numFaces: number, modifier: number): number {
     let total: number = 0;
   
     for (let i = 0; i < numDice; i++) {
@@ -12,4 +12,4 @@ function rollDice(numDice: number, numFaces: number, modifier: number): number {
     return total;
   }
 
-  export default rollDice;
+  export default RollDice;

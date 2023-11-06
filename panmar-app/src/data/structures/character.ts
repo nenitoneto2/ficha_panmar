@@ -8,7 +8,7 @@ import CombatStyles from './combatstyles'
 import Magic from './magic'
 import PlayableSpecies from './species'
 
-interface Character {
+export interface Character {
     speicie: PlayableSpecies,
     element: MagicElement,
     rank: Rank,
