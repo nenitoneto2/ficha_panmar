@@ -1,4 +1,5 @@
-import Character from './character'
+import {Character} from './character'
+import Dice from '../../resorces/dice'
 
 enum Proficiencies{
     Martial,
@@ -27,8 +28,6 @@ enum Proficiencies{
 export default Proficiencies
 
 export function GetModifier(character: Character, proficiency: Proficiencies){
-    var Modifier
-
     switch(proficiency){
         case Proficiencies.Martial:
             return character.combatant * 2
@@ -73,4 +72,8 @@ export function GetModifier(character: Character, proficiency: Proficiencies){
         case Proficiencies.Will:
             return character.protector + character.eloquence
     }
+}
+
+export function RollProfeciency(character: Character, proficiency: Proficiencies) {
+    return Dice(1, 20, GetModifier(character, proficiency))
 }
