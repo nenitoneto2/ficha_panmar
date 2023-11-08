@@ -34,7 +34,11 @@ enum CharacterOrigins{
 }
 
 interface LivingCharacter{
+<<<<<<< HEAD:panmar-app/src/data/structures/character.ts
     characterInfo: LivingCharacter,
+=======
+    characterInfo: Character,
+>>>>>>> 991df8794a0a3860151588dc82f9893923aa00ce:ficha-app/src/data/structures/character.ts
     lifeDices: number,
     manaDices: number,
     talentPoints: number
@@ -43,4 +47,10 @@ interface LivingCharacter{
     maxMana:number,
     currentMana: number,
     knowledge: number
+<<<<<<< HEAD:panmar-app/src/data/structures/character.ts
 }
+=======
+}
+
+export default LivingCharacter
+>>>>>>> 991df8794a0a3860151588dc82f9893923aa00ce:ficha-app/src/data/structures/character.ts
