@@ -1,5 +1,5 @@
 import {Character} from './character'
-import Dice from '../../resorces/dice'
+import Dice from '../../../../ficha-app/src/resorces/dice'
 
 enum Proficiencies{
     Martial,

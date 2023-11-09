@@ -6,7 +6,10 @@ enum Talents{
     InvasiveStance,
     EvasiveStance,
     ConcentrationStance,
-    Aim
+    Aim,
+    Meditate,
+    MagicalLearn,
+    SmallTricks
 }
 
 export default Talents
