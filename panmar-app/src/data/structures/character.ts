@@ -9,8 +9,8 @@ import Magic from './magic'
 import PlayableSpecies from './species'
 
 export interface Character {
-    speicie: PlayableSpecies,
-    element: MagicElement,
+    specie: PlayableSpecies,
+    element: MagicElement[],
     rank: Rank,
     combatant: number,
     magic: number,
@@ -18,20 +18,21 @@ export interface Character {
     create: number,
     protector: number,
     eloquence: number,
-    talents: Talents,
+    talents: Talents[],
     origins: CharacterOrigins,
     equipments: Equipment[],
     symbols: Symbols,
     proficiencies: Proficiencies[],
-    styles: CombatStyles,
-    magics: Magic,
+    styles: CombatStyles[],
+    magics: Magic[],
     name: String
 }
 
-enum CharacterOrigins{
+export enum CharacterOrigins{
     SpearCoast,
     LichKingdom,
     TurtleIslands,
+    OrchidInstitute
 }
 
 interface LivingCharacter{

@@ -1,28 +1,28 @@
 enum Rank {
-    Base1,
-    Base2,
-    Base3,
-    Bronze1,
-    Bronze2,
-    Bronze3,
-    Silver1,
-    Silver2,
-    Silver3,
-    Gold1,
-    Gold2,
-    Gold3,
-    Gold4,
-    Gold5,
-    Apex1,
-    Apex2,
-    Apex3,
-    Apex4,
-    Apex5,
-    SmallerStar,
-    MediumStar,
-    BiggerStar,
-    Supernova,
-    Illuminated
+    Base1 = 0,
+    Base2 = 1,
+    Base3 = 2,
+    Bronze1 = 3,
+    Bronze2 = 4,
+    Bronze3 = 5,
+    Silver1 = 6,
+    Silver2 = 7,
+    Silver3 = 8,
+    Gold1 = 9,
+    Gold2 = 10,
+    Gold3 = 11,
+    Gold4 = 12,
+    Gold5 = 13,
+    Apex1 = 14,
+    Apex2 = 15,
+    Apex3 = 16,
+    Apex4 = 17,
+    Apex5 = 18,
+    SmallerStar = 19,
+    MediumStar = 20,
+    BiggerStar = 21,
+    Supernova = 22,
+    Illuminated = 23
 }
 
 export function GetRankValues(rank : Rank) {
@@ -78,5 +78,46 @@ export function GetRankValues(rank : Rank) {
     }
 }
 
+export function GetTotalLifeDices(rank: Rank) {
+    let diceNum = 0;
+
+    for (let r in Rank) {
+        if (parseRank(r) <= rank) {
+            diceNum += GetRankValues(parseRank(r)).life
+        }
+    }
+
+    return diceNum;
+}
+
+export function GetTotalManaDices(rank: Rank) {
+    let diceNum = 0;
+
+    for (let r in Rank) {
+        if (parseRank(r) <= rank) {
+            diceNum += GetRankValues(parseRank(r)).mana
+        }
+    }
+
+    return diceNum;
+}
+
+export function GetTotalKnowledge(rank: Rank) {
+    let diceNum = 0;
+
+    for (let r in Rank) {
+        if (parseRank(r) <= rank) {
+            diceNum += GetRankValues(parseRank(r)).KnowledgePoints
+        }
+    }
+
+    return diceNum;
+}
+
+function parseRank(str: string): Rank | undefined {
+    const enumKey: keyof typeof Rank = str as keyof typeof Rank;
+    const enumValue: Rank = Rank[enumKey];
+    return enumValue;
+}
 
 export default Rank

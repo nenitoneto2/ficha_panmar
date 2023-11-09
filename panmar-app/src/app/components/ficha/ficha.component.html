@@ -1,3 +1,41 @@
 
 <button (click)="addnumber()">dasdasdasd</button>
-<h1>{{cavalo}}</h1>
+<h1>Character Sheet</h1>
+<div>
+    <h1>Name: {{sampleCharacter.characterInfo.name}}</h1>
+    <h1>Life: dices {{sampleCharacter.lifeDices}} || {{sampleCharacter.currentLife}}/{{sampleCharacter.maxLife}}</h1>
+    <h1>Mana: dices {{sampleCharacter.manaDices}} || {{sampleCharacter.currentMana}}/{{sampleCharacter.maxMana}}</h1>
+    <h1>Talent Points: {{sampleCharacter.talentPoints}}</h1>
+    <h1>Knowledge Points: {{sampleCharacter.knowledge}}</h1>
+
+    <h1> <strong>Stats: </strong></h1>
+    <h1>Combatant {{sampleCharacter.characterInfo.combatant}} 
+        <button (click)="rollCombatant()">Roll</button>
+    </h1>
+    <h1>Magic {{sampleCharacter.characterInfo.magic}}
+        <button (click)="rollMagic()">Roll</button>
+    </h1>
+    <h1>Sagacious {{sampleCharacter.characterInfo.sagacious}}
+        <button (click)="rollSagacious()">Roll</button>
+    </h1>
+    <h1>Create {{sampleCharacter.characterInfo.create}}
+        <button (click)="rollCreate()">Roll</button>
+    </h1>
+    <h1>Protector {{sampleCharacter.characterInfo.protector}}
+        <button (click)="rollProtector()">Roll</button>
+    </h1>
+    <h1>Eloquence {{sampleCharacter.characterInfo.eloquence}}
+        <button (click)="rollEloqunce()">Roll</button>
+    </h1>
+    <h1>Talents: {{sampleCharacter.characterInfo.talents[0]}} | 
+        {{sampleCharacter.characterInfo.talents[1]}} |
+        {{sampleCharacter.characterInfo.talents[2]}}
+    </h1>
+    <h1>Origins: {{sampleCharacter.characterInfo.origins}}</h1>
+    <h1>Equipments: {{sampleCharacter.characterInfo.equipments[0]}}</h1>
+    <h1>Symbols: {{sampleCharacter.characterInfo.symbols}}</h1>
+    <h1>Proficiencies: </h1>
+    <h1>Styles: </h1>
+    <h1>Magics: </h1>
+    <h1>Dice: {{dice}}</h1>
+</div>

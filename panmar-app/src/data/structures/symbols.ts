@@ -1,4 +1,5 @@
 enum Symbols{
+    None,
     War,
 }
 
