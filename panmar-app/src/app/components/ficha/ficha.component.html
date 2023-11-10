@@ -9,25 +9,25 @@
     <h1>Knowledge Points: {{sampleCharacter.knowledge}}</h1>
 
     <h1> <strong>Stats: </strong></h1>
-    <h1>Combatant {{sampleCharacter.characterInfo.combatant}} 
+    <h1>Combatant {{sampleCharacter.characterInfo.stats[0]}} 
         <button (click)="rollCombatant()">Roll</button>
     </h1>
-    <h1>Magic {{sampleCharacter.characterInfo.magic}}
+    <h1>Magic {{sampleCharacter.characterInfo.stats[0]}}
         <button (click)="rollMagic()">Roll</button>
     </h1>
-    <h1>Sagacious {{sampleCharacter.characterInfo.sagacious}}
+    <h1>Sagacious {{sampleCharacter.characterInfo.stats[1]}}
         <button (click)="rollSagacious()">Roll</button>
     </h1>
-    <h1>Create {{sampleCharacter.characterInfo.create}}
+    <h1>Create {{sampleCharacter.characterInfo.stats[2]}}
         <button (click)="rollCreate()">Roll</button>
     </h1>
-    <h1>Protector {{sampleCharacter.characterInfo.protector}}
+    <h1>Protector {{sampleCharacter.characterInfo.stats[3]}}
         <button (click)="rollProtector()">Roll</button>
     </h1>
-    <h1>Eloquence {{sampleCharacter.characterInfo.eloquence}}
+    <h1>Eloquence {{sampleCharacter.characterInfo.stats[4]}}
         <button (click)="rollEloqunce()">Roll</button>
     </h1>
-    <h1>Talents: {{sampleCharacter.characterInfo.talents[0]}} | 
+    <h1>Talents: {{sampleCharacter.characterInfo.talents[5]}} | 
         {{sampleCharacter.characterInfo.talents[1]}} |
         {{sampleCharacter.characterInfo.talents[2]}}
     </h1>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import LivingCharacter, { CharacterOrigins } from 'src/data/structures/character';
+import LivingCharacter, { CharacterOrigins, CharacterStats } from 'src/data/structures/character';
 import { Character } from 'src/data/structures/character';
 import RollDice from '../../../../../ficha-app/src/resorces/dice';
 import PlayableSpecies from 'src/data/structures/species';
@@ -9,6 +9,7 @@ import Talents from 'src/data/structures/talents';
 import Equipment from 'src/data/structures/equipment';
 import Symbols from 'src/data/structures/symbols';
 import { GetTotalLifeDices, GetTotalManaDices, GetTotalKnowledge } from 'src/data/structures/powerrank';
+import { StatType } from 'src/data/structures/stats';
 
 @Component({
   selector: 'app-ficha',
@@ -24,12 +25,7 @@ export class FichaComponent {
     specie: PlayableSpecies.Hanaku,
     element: [MagicElement.Lightning, MagicElement.Reflection],
     rank: Rank.Base1,
-    combatant: 0,
-    magic: 0,
-    sagacious: 0,
-    create: 0,
-    protector: 0,
-    eloquence: 1,
+    stats: new CharacterStats(0, 0, 0, 0, 0, 1),
     talents: [Talents.Meditate, Talents.MagicalLearn, Talents.SmallTricks],
     origins: CharacterOrigins.OrchidInstitute,
     equipments: [this.wand],
@@ -52,34 +48,30 @@ export class FichaComponent {
     knowledge: GetTotalKnowledge(this.character.rank)
   }
 
-  rollDice(mod = 0) : number{
-    return RollDice(1, 20, mod)
-  }
-
   dice:number = 0
 
   rollCombatant(){
-    this.dice = this.rollDice(this.sampleCharacter.characterInfo.combatant)
+    this.dice = this.sampleCharacter.characterInfo.stats.GetStatMod(StatType.Combatant).RollStat()
   }
 
   rollMagic(){
-    this.dice = this.rollDice(this.sampleCharacter.characterInfo.magic)
+    this.dice = this.sampleCharacter.characterInfo.stats.GetStatMod(StatType.Magic).RollStat()
   }
 
   rollSagacious(){
-    this.dice = this.rollDice(this.sampleCharacter.characterInfo.sagacious)
+    this.dice = this.sampleCharacter.characterInfo.stats.GetStatMod(StatType.Sagacious).RollStat()
   }
 
   rollCreate(){
-    this.dice = this.rollDice(this.sampleCharacter.characterInfo.create)
+    this.dice = this.sampleCharacter.characterInfo.stats.GetStatMod(StatType.Create).RollStat()
   }
 
   rollProtector(){
-    this.dice = this.rollDice(this.sampleCharacter.characterInfo.protector)
+    this.dice = this.sampleCharacter.characterInfo.stats.GetStatMod(StatType.Protector).RollStat()
   }
 
   rollEloqunce(){
-    this.dice = this.rollDice(this.sampleCharacter.characterInfo.eloquence)
+    this.dice = this.sampleCharacter.characterInfo.stats.GetStatMod(StatType.Eloquence).RollStat()
   }
 
   addnumber() {

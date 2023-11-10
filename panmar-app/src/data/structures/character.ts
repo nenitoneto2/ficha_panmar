@@ -7,26 +7,42 @@ import Proficiencies from './proficiencies'
 import CombatStyles from './combatstyles'
 import Magic from './magic'
 import PlayableSpecies from './species'
+import Stat, { StatType } from './stats'
 
-export interface Character {
-    specie: PlayableSpecies,
-    element: MagicElement[],
-    rank: Rank,
-    combatant: number,
-    magic: number,
-    sagacious: number,
-    create: number,
-    protector: number,
-    eloquence: number,
-    talents: Talents[],
-    origins: CharacterOrigins,
-    equipments: Equipment[],
-    symbols: Symbols,
-    proficiencies: Proficiencies[],
-    styles: CombatStyles[],
-    magics: Magic[],
+export class Character {
+    specie: PlayableSpecies
+    element: MagicElement[]
+    rank: Rank
+    stats: CharacterStats
+    talents: Talents[]
+    origins: CharacterOrigins
+    equipments: Equipment[]
+    symbols: Symbols
+    proficiencies: Proficiencies[]
+    styles: CombatStyles[]
+    magics: Magic[]
     name: String
 }
+
+export class CharacterStats{
+    stats: Stat[]
+
+    constructor(combatant: number, magic:number, sagacious: number, create: number, protector:number, eloquence: number){
+        this.stats = [
+            new Stat(StatType.Combatant, combatant),
+            new Stat(StatType.Magic, magic),
+            new Stat(StatType.Sagacious, sagacious),
+            new Stat(StatType.Create, create),
+            new Stat(StatType.Protector, protector),
+            new Stat(StatType.Eloquence, eloquence),
+        ]
+    }
+
+    GetStatMod(type:StatType) {
+        return this.stats.find(s => s.type == type)
+    }
+}
+
 
 export enum CharacterOrigins{
     SpearCoast,
@@ -35,24 +51,16 @@ export enum CharacterOrigins{
     OrchidInstitute
 }
 
-interface LivingCharacter{
-<<<<<<< HEAD:panmar-app/src/data/structures/character.ts
-    characterInfo: LivingCharacter,
-=======
-    characterInfo: Character,
->>>>>>> 991df8794a0a3860151588dc82f9893923aa00ce:ficha-app/src/data/structures/character.ts
-    lifeDices: number,
-    manaDices: number,
+class LivingCharacter{
+    characterInfo: Character
+    lifeDices: number
+    manaDices: number
     talentPoints: number
-    maxLife: number,
-    currentLife: number,
-    maxMana:number,
-    currentMana: number,
+    maxLife: number
+    currentLife: number
+    maxMana:number
+    currentMana: number
     knowledge: number
-<<<<<<< HEAD:panmar-app/src/data/structures/character.ts
-}
-=======
 }
 
 export default LivingCharacter
->>>>>>> 991df8794a0a3860151588dc82f9893923aa00ce:ficha-app/src/data/structures/character.ts
