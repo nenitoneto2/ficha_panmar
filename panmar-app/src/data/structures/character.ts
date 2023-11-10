@@ -3,7 +3,7 @@ import Rank from './powerrank'
 import Talents from './talents'
 import Equipment from './equipment'
 import Symbols from './symbols'
-import Proficiencies from './proficiencies'
+import { Proficiencies } from './proficiencies'
 import CombatStyles from './combatstyles'
 import Magic from './magic'
 import PlayableSpecies from './species'
@@ -18,7 +18,7 @@ export class Character {
     origins: CharacterOrigins
     equipments: Equipment[]
     symbols: Symbols
-    proficiencies: Proficiencies[]
+    proficiencies: Proficiencies
     styles: CombatStyles[]
     magics: Magic[]
     name: String
@@ -38,7 +38,7 @@ export class CharacterStats{
         ]
     }
 
-    GetStatMod(type:StatType) {
+    GetStat(type:StatType) {
         return this.stats.find(s => s.type == type)
     }
 }
