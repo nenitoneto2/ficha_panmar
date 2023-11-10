@@ -1,7 +1,8 @@
-import {Character} from './character'
+import {Character, CharacterStats} from './character'
 import Dice from '../../../../ficha-app/src/resorces/dice'
+import { StatType } from './stats'
 
-enum Proficiencies{
+enum ProficienciesType{
     Martial,
     Arcane,
     Stealth,
@@ -25,55 +26,95 @@ enum Proficiencies{
     Will
 }
 
-export default Proficiencies
+export class Proficiency{
+    type: ProficienciesType
+    hasProficiency: boolean
 
-export function GetModifier(character: Character, proficiency: Proficiencies){
-    switch(proficiency){
-        case Proficiencies.Martial:
-            return character.combatant * 2
-        case Proficiencies.Arcane:
-            return character.magic * 2
-        case Proficiencies.Stealth:
-            return character.sagacious * 2
-        case Proficiencies.Create:
-            return character.create * 2
-        case Proficiencies.Concentration:
-            return character.protector * 2
-        case Proficiencies.Act:
-            return character.eloquence * 2
-        case Proficiencies.Meridian:
-            return character.combatant + character.magic
-        case Proficiencies.Acrobacy:
-            return character.combatant + character.sagacious
-        case Proficiencies.Training:
-            return character.combatant + character.create
-        case Proficiencies.Athletics:
-            return character.combatant + character.protector
-        case Proficiencies.Presence:
-            return character.combatant + character.eloquence
-        case Proficiencies.Perception:
-            return character.magic + character.sagacious
-        case Proficiencies.World:
-            return character.magic + character.create
-        case Proficiencies.Medicine:
-            return character.magic + character.protector
-        case Proficiencies.Charisma:
-            return character.magic + character.eloquence
-        case Proficiencies.SleightOfHand:
-            return character.sagacious + character.create
-        case Proficiencies.Survival:
-            return character.sagacious + character.protector
-        case Proficiencies.ObtainInformation:
-            return character.sagacious + character.eloquence
-        case Proficiencies.Monsters:
-            return character.create + character.protector
-        case Proficiencies.Cultural:
-            return character.create + character.eloquence
-        case Proficiencies.Will:
-            return character.protector + character.eloquence
+    constructor(type: ProficienciesType, hasProficiency: boolean = false){
+        this.type = type,
+        this.hasProficiency = hasProficiency
+    }
+
+    GetModifier(stats: CharacterStats){
+        if(!this.hasProficiency){
+            return 0
+        }
+
+        switch(this.type){
+            case ProficienciesType.Martial:
+                return stats.GetStat(StatType.Combatant).modifier * 2
+            case ProficienciesType.Arcane:
+                return stats.GetStat(StatType.Magic).modifier * 2
+            case ProficienciesType.Stealth:
+                return stats.GetStat(StatType.Sagacious).modifier * 2
+            case ProficienciesType.Create:
+                return stats.GetStat(StatType.Create).modifier * 2
+            case ProficienciesType.Concentration:
+                return stats.GetStat(StatType.Protector).modifier * 2
+            case ProficienciesType.Act:
+                return stats.GetStat(StatType.Eloquence).modifier * 2
+            case ProficienciesType.Meridian:
+                return stats.GetStat(StatType.Combatant).modifier + stats.GetStat(StatType.Magic).modifier
+            case ProficienciesType.Acrobacy:
+                return stats.GetStat(StatType.Combatant).modifier + stats.GetStat(StatType.Sagacious).modifier
+            case ProficienciesType.Training:
+                return stats.GetStat(StatType.Combatant).modifier + stats.GetStat(StatType.Create).modifier
+            case ProficienciesType.Athletics:
+                return stats.GetStat(StatType.Combatant).modifier + stats.GetStat(StatType.Protector).modifier
+            case ProficienciesType.Presence:
+                return stats.GetStat(StatType.Combatant).modifier + stats.GetStat(StatType.Eloquence).modifier
+            case ProficienciesType.Perception:
+                return stats.GetStat(StatType.Magic).modifier + stats.GetStat(StatType.Sagacious).modifier
+            case ProficienciesType.World:
+                return stats.GetStat(StatType.Magic).modifier + stats.GetStat(StatType.Create).modifier
+            case ProficienciesType.Medicine:
+                return stats.GetStat(StatType.Magic).modifier + stats.GetStat(StatType.Protector).modifier
+            case ProficienciesType.Charisma:
+                return stats.GetStat(StatType.Magic).modifier + stats.GetStat(StatType.Eloquence).modifier
+            case ProficienciesType.SleightOfHand:
+                return stats.GetStat(StatType.Sagacious).modifier + stats.GetStat(StatType.Create).modifier
+            case ProficienciesType.Survival:
+                return stats.GetStat(StatType.Sagacious).modifier + stats.GetStat(StatType.Protector).modifier
+            case ProficienciesType.ObtainInformation:
+                return stats.GetStat(StatType.Sagacious).modifier + stats.GetStat(StatType.Eloquence).modifier
+            case ProficienciesType.Monsters:
+                return stats.GetStat(StatType.Create).modifier + stats.GetStat(StatType.Protector).modifier
+            case ProficienciesType.Cultural:
+                return stats.GetStat(StatType.Create).modifier + stats.GetStat(StatType.Eloquence).modifier
+            case ProficienciesType.Will:
+                return stats.GetStat(StatType.Protector).modifier + stats.GetStat(StatType.Eloquence).modifier
+        }
+    }
+
+    RollProfeciency(stats: CharacterStats) {
+        
+        return this.hasProficiency ?  Dice(1, 20, this.GetModifier(stats)) : 
+            Math.min(Dice(1, 20, this.GetModifier(stats)), Dice(1, 20, this.GetModifier(stats)))
     }
 }
 
-export function RollProfeciency(character: Character, proficiency: Proficiencies) {
-    return Dice(1, 20, GetModifier(character, proficiency))
+export class Proficiencies{
+    proficiencies: Proficiency[] = []
+
+    constructor(proficiencies: Proficiency[]){
+        for(let p in ProficienciesType){
+            this.proficiencies.push( new Proficiency(parseProficiency(p), proficiencies.find(pro => pro.type == parseProficiency(p)) != null))
+        }
+    }
+
+    GetProficiencyModifier(type: ProficienciesType, stats: CharacterStats){
+        return this.proficiencies.find(p => p.type == type).GetModifier(stats)
+    }
+
+    RollProficiency(type: ProficienciesType, stats: CharacterStats){
+        return this.proficiencies.find(p => p.type == type).RollProfeciency(stats)
+    }
 }
+
+function parseProficiency(str: string): ProficienciesType | undefined {
+    const enumKey: keyof typeof ProficienciesType = str as keyof typeof ProficienciesType;
+    const enumValue: ProficienciesType = ProficienciesType[enumKey];
+    return enumValue;
+}
+
+export default ProficienciesType

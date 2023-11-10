@@ -10,6 +10,7 @@ import Equipment from 'src/data/structures/equipment';
 import Symbols from 'src/data/structures/symbols';
 import { GetTotalLifeDices, GetTotalManaDices, GetTotalKnowledge } from 'src/data/structures/powerrank';
 import { StatType } from 'src/data/structures/stats';
+import { Proficiencies } from 'src/data/structures/proficiencies';
 
 @Component({
   selector: 'app-ficha',
@@ -30,7 +31,7 @@ export class FichaComponent {
     origins: CharacterOrigins.OrchidInstitute,
     equipments: [this.wand],
     symbols: Symbols.None,
-    proficiencies: [],
+    proficiencies: new Proficiencies([]),
     styles: [],
     magics: [],
     name: "Aurelius Nocturne"
@@ -51,27 +52,27 @@ export class FichaComponent {
   dice:number = 0
 
   rollCombatant(){
-    this.dice = this.sampleCharacter.characterInfo.stats.GetStatMod(StatType.Combatant).RollStat()
+    this.dice = this.sampleCharacter.characterInfo.stats.GetStat(StatType.Combatant).RollStat()
   }
 
   rollMagic(){
-    this.dice = this.sampleCharacter.characterInfo.stats.GetStatMod(StatType.Magic).RollStat()
+    this.dice = this.sampleCharacter.characterInfo.stats.GetStat(StatType.Magic).RollStat()
   }
 
   rollSagacious(){
-    this.dice = this.sampleCharacter.characterInfo.stats.GetStatMod(StatType.Sagacious).RollStat()
+    this.dice = this.sampleCharacter.characterInfo.stats.GetStat(StatType.Sagacious).RollStat()
   }
 
   rollCreate(){
-    this.dice = this.sampleCharacter.characterInfo.stats.GetStatMod(StatType.Create).RollStat()
+    this.dice = this.sampleCharacter.characterInfo.stats.GetStat(StatType.Create).RollStat()
   }
 
   rollProtector(){
-    this.dice = this.sampleCharacter.characterInfo.stats.GetStatMod(StatType.Protector).RollStat()
+    this.dice = this.sampleCharacter.characterInfo.stats.GetStat(StatType.Protector).RollStat()
   }
 
   rollEloqunce(){
-    this.dice = this.sampleCharacter.characterInfo.stats.GetStatMod(StatType.Eloquence).RollStat()
+    this.dice = this.sampleCharacter.characterInfo.stats.GetStat(StatType.Eloquence).RollStat()
   }
 
   addnumber() {
