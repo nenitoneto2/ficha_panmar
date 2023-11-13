@@ -8,6 +8,7 @@ import CombatStyles from './combatstyles'
 import Magic from './magic'
 import PlayableSpecies from './species'
 import Stat, { StatType } from './stats'
+import { KnowledgeCollection } from './knoledge'
 
 export class Character {
     specie: PlayableSpecies
@@ -19,6 +20,7 @@ export class Character {
     equipments: Equipment[]
     symbols: Symbols
     proficiencies: Proficiencies
+    knowledges: KnowledgeCollection
     styles: CombatStyles[]
     magics: Magic[]
     name: String
