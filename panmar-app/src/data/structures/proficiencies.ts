@@ -1,6 +1,8 @@
 import {Character, CharacterStats} from './character'
-import Dice from '../../../../ficha-app/src/resorces/dice'
+import Dice, { DiceRollType } from '../../../../ficha-app/src/resorces/dice'
 import { StatType } from './stats'
+import { KnowledgeCollection } from './knoledge'
+import RollDice from '../../../../ficha-app/src/resorces/dice'
 
 enum ProficienciesType{
     Martial,
@@ -28,68 +30,86 @@ enum ProficienciesType{
 
 export class Proficiency{
     type: ProficienciesType
-    hasProficiency: boolean
 
-    constructor(type: ProficienciesType, hasProficiency: boolean = false){
+    constructor(type: ProficienciesType){
         this.type = type,
-        this.hasProficiency = hasProficiency
     }
 
-    GetModifier(stats: CharacterStats){
-        if(!this.hasProficiency){
-            return 0
-        }
-
+    GetModifier(stats: CharacterStats, knowledge: KnowledgeCollection): number{
+        let knowledgeMod = knowledge.GetKnowledgeProficiencyModfier(this.type) 
+        let statMod: number 
         switch(this.type){
             case ProficienciesType.Martial:
-                return stats.GetStat(StatType.Combatant).modifier * 2
+                statMod = stats.GetStat(StatType.Combatant).modifier * 2 
+                break
             case ProficienciesType.Arcane:
-                return stats.GetStat(StatType.Magic).modifier * 2
+                statMod =  stats.GetStat(StatType.Magic).modifier * 2
+                break
             case ProficienciesType.Stealth:
-                return stats.GetStat(StatType.Sagacious).modifier * 2
+                statMod =  stats.GetStat(StatType.Sagacious).modifier * 2
+                break
             case ProficienciesType.Create:
-                return stats.GetStat(StatType.Create).modifier * 2
+                statMod =  stats.GetStat(StatType.Create).modifier * 2
+                break
             case ProficienciesType.Concentration:
-                return stats.GetStat(StatType.Protector).modifier * 2
+                statMod =  stats.GetStat(StatType.Protector).modifier * 2
+                break
             case ProficienciesType.Act:
-                return stats.GetStat(StatType.Eloquence).modifier * 2
+                statMod =  stats.GetStat(StatType.Eloquence).modifier * 2
+                break
             case ProficienciesType.Meridian:
-                return stats.GetStat(StatType.Combatant).modifier + stats.GetStat(StatType.Magic).modifier
+                statMod =  stats.GetStat(StatType.Combatant).modifier + stats.GetStat(StatType.Magic).modifier
+                break
             case ProficienciesType.Acrobacy:
-                return stats.GetStat(StatType.Combatant).modifier + stats.GetStat(StatType.Sagacious).modifier
+                statMod =  stats.GetStat(StatType.Combatant).modifier + stats.GetStat(StatType.Sagacious).modifier
+                break
             case ProficienciesType.Training:
-                return stats.GetStat(StatType.Combatant).modifier + stats.GetStat(StatType.Create).modifier
+                statMod =  stats.GetStat(StatType.Combatant).modifier + stats.GetStat(StatType.Create).modifier
+                break
             case ProficienciesType.Athletics:
-                return stats.GetStat(StatType.Combatant).modifier + stats.GetStat(StatType.Protector).modifier
+                statMod =  stats.GetStat(StatType.Combatant).modifier + stats.GetStat(StatType.Protector).modifier
+                break
             case ProficienciesType.Presence:
-                return stats.GetStat(StatType.Combatant).modifier + stats.GetStat(StatType.Eloquence).modifier
+                statMod =  stats.GetStat(StatType.Combatant).modifier + stats.GetStat(StatType.Eloquence).modifier
+                break
             case ProficienciesType.Perception:
-                return stats.GetStat(StatType.Magic).modifier + stats.GetStat(StatType.Sagacious).modifier
+                statMod =  stats.GetStat(StatType.Magic).modifier + stats.GetStat(StatType.Sagacious).modifier
+                break
             case ProficienciesType.World:
-                return stats.GetStat(StatType.Magic).modifier + stats.GetStat(StatType.Create).modifier
+                statMod =  stats.GetStat(StatType.Magic).modifier + stats.GetStat(StatType.Create).modifier
+                break
             case ProficienciesType.Medicine:
-                return stats.GetStat(StatType.Magic).modifier + stats.GetStat(StatType.Protector).modifier
+                statMod =  stats.GetStat(StatType.Magic).modifier + stats.GetStat(StatType.Protector).modifier
+                break
             case ProficienciesType.Charisma:
-                return stats.GetStat(StatType.Magic).modifier + stats.GetStat(StatType.Eloquence).modifier
+                statMod =  stats.GetStat(StatType.Magic).modifier + stats.GetStat(StatType.Eloquence).modifier
+                break
             case ProficienciesType.SleightOfHand:
-                return stats.GetStat(StatType.Sagacious).modifier + stats.GetStat(StatType.Create).modifier
+                statMod =  stats.GetStat(StatType.Sagacious).modifier + stats.GetStat(StatType.Create).modifier
+                break
             case ProficienciesType.Survival:
-                return stats.GetStat(StatType.Sagacious).modifier + stats.GetStat(StatType.Protector).modifier
+                statMod =  stats.GetStat(StatType.Sagacious).modifier + stats.GetStat(StatType.Protector).modifier
+                break
             case ProficienciesType.ObtainInformation:
-                return stats.GetStat(StatType.Sagacious).modifier + stats.GetStat(StatType.Eloquence).modifier
+                statMod =  stats.GetStat(StatType.Sagacious).modifier + stats.GetStat(StatType.Eloquence).modifier
+                break
             case ProficienciesType.Monsters:
-                return stats.GetStat(StatType.Create).modifier + stats.GetStat(StatType.Protector).modifier
+                statMod =  stats.GetStat(StatType.Create).modifier + stats.GetStat(StatType.Protector).modifier
+                break
             case ProficienciesType.Cultural:
-                return stats.GetStat(StatType.Create).modifier + stats.GetStat(StatType.Eloquence).modifier
+                statMod =  stats.GetStat(StatType.Create).modifier + stats.GetStat(StatType.Eloquence).modifier
+                break
             case ProficienciesType.Will:
-                return stats.GetStat(StatType.Protector).modifier + stats.GetStat(StatType.Eloquence).modifier
+                statMod =  stats.GetStat(StatType.Protector).modifier + stats.GetStat(StatType.Eloquence).modifier
+                
+            
         }
+        return knowledgeMod + statMod
     }
 
-    RollProfeciency(stats: CharacterStats) {
-        
-        return this.hasProficiency ?  Dice(1, 20, this.GetModifier(stats)) : 
-            Math.min(Dice(1, 20, this.GetModifier(stats)), Dice(1, 20, this.GetModifier(stats)))
+    RollProfeciency(stats: CharacterStats, knowledge: KnowledgeCollection) {
+        let mod = this.GetModifier(stats, knowledge)
+        return RollDice(1, 20, mod, mod == 0 ? DiceRollType.Disadvantage : DiceRollType.Standard)
     }
 }
 
@@ -98,20 +118,20 @@ export class Proficiencies{
 
     constructor(proficiencies: Proficiency[]){
         for(let p in ProficienciesType){
-            this.proficiencies.push( new Proficiency(parseProficiency(p), proficiencies.find(pro => pro.type == parseProficiency(p)) != null))
+            this.proficiencies.push( new Proficiency(parseProficiency(p)))
         }
     }
 
-    GetProficiencyModifier(type: ProficienciesType, stats: CharacterStats){
-        return this.proficiencies.find(p => p.type == type).GetModifier(stats)
+    GetProficiencyModifier(type: ProficienciesType, stats: CharacterStats, knowledge:KnowledgeCollection){
+        return this.proficiencies.find(p => p.type == type).GetModifier(stats, knowledge)
     }
 
-    RollProficiency(type: ProficienciesType, stats: CharacterStats){
-        return this.proficiencies.find(p => p.type == type).RollProfeciency(stats)
+    RollProficiency(type: ProficienciesType, stats: CharacterStats, knowledge:KnowledgeCollection){
+        return  this.proficiencies.find(p => p.type == type).RollProfeciency(stats, knowledge)
     }
 }
 
-function parseProficiency(str: string): ProficienciesType | undefined {
+export function parseProficiency(str: string): ProficienciesType | undefined {
     const enumKey: keyof typeof ProficienciesType = str as keyof typeof ProficienciesType;
     const enumValue: ProficienciesType = ProficienciesType[enumKey];
     return enumValue;

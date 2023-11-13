@@ -11,6 +11,7 @@ import Symbols from 'src/data/structures/symbols';
 import { GetTotalLifeDices, GetTotalManaDices, GetTotalKnowledge } from 'src/data/structures/powerrank';
 import { StatType } from 'src/data/structures/stats';
 import { Proficiencies } from 'src/data/structures/proficiencies';
+import { KnowledgeCollection } from 'src/data/structures/knoledge';
 
 @Component({
   selector: 'app-ficha',
@@ -34,6 +35,7 @@ export class FichaComponent {
     proficiencies: new Proficiencies([]),
     styles: [],
     magics: [],
+    knowledges: new KnowledgeCollection(),
     name: "Aurelius Nocturne"
   }
 
