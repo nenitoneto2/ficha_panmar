@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import LivingCharacter, { CharacterOrigins, CharacterStats } from 'src/data/structures/character';
 import { Character } from 'src/data/structures/character';
-import RollDice from '../../../../../ficha-app/src/resorces/dice';
 import PlayableSpecies from 'src/data/structures/species';
 import MagicElement from 'src/data/structures/elements';
 import Rank from 'src/data/structures/powerrank';
@@ -12,6 +11,7 @@ import { GetTotalLifeDices, GetTotalManaDices, GetTotalKnowledge } from 'src/dat
 import { StatType } from 'src/data/structures/stats';
 import { Proficiencies } from 'src/data/structures/proficiencies';
 import { KnowledgeCollection } from 'src/data/structures/knoledge';
+require('../../../data/db/CharacterDBObject')
 
 @Component({
   selector: 'app-ficha',

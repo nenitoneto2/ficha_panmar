@@ -1,7 +1,7 @@
-const mongoose = require('mongoose')
+import {mongoose} from '../db/dbLoader'
+const restful = require('node-restful')
 const Schema = mongoose.Schema
 
-import LivingCharacter from "../structures/character"
 
 const CharacterSchema = new Schema({
     googleID: {
@@ -17,4 +17,4 @@ const CharacterSchema = new Schema({
 
 const CharacterModel = mongoose.model('Character', CharacterSchema)
 
-module.exports = CharacterModel
+module.exports = restful.model("characterDB", CharacterModel)

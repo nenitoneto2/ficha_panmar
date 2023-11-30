@@ -1,8 +1,8 @@
 import {Character, CharacterStats} from './character'
-import Dice, { DiceRollType } from '../../../../ficha-app/src/resorces/dice'
 import { StatType } from './stats'
 import { KnowledgeCollection } from './knoledge'
-import RollDice from '../../../../ficha-app/src/resorces/dice'
+import RollDice from 'src/resorces/dice'
+import { DiceRollType } from 'src/resorces/dice'
 
 enum ProficienciesType{
     Martial,
@@ -32,7 +32,7 @@ export class Proficiency{
     type: ProficienciesType
 
     constructor(type: ProficienciesType){
-        this.type = type,
+        this.type = type
     }
 
     GetModifier(stats: CharacterStats, knowledge: KnowledgeCollection): number{
