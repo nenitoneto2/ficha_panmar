@@ -1,4 +1,4 @@
-import RollDice from "../../../../ficha-app/src/resorces/dice"
+import RollDice from "src/resorces/dice"
 
 export enum StatType{
     Combatant,
@@ -19,6 +19,6 @@ export default class Stat{
     }
 
     RollStat(){
-        return RollDice(1, 20, this.modifier)
+        return RollDice(1, 20, this.modifier).result
     }
 }
