@@ -1,5 +1,4 @@
 
-<button (click)="addnumber()">dasdasdasd</button>
 <h1>Character Sheet</h1>
 <div>
     <h1>Name: {{sampleCharacter.characterInfo.name}}</h1>
@@ -38,4 +37,8 @@
     <h1>Styles: </h1>
     <h1>Magics: </h1>
     <h1>Dice: {{dice}}</h1>
+    <button (click)="saveCharacter()"></button>
+    <h1>Character From DB</h1>
+    <h1>Char Name: {{requestedCharacter.character.characterInfo.name}}</h1>
+    
 </div>
