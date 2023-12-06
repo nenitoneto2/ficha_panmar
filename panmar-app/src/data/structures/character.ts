@@ -23,7 +23,7 @@ export class Character {
     knowledges: KnowledgeCollection
     styles: CombatStyles[]
     magics: Magic[]
-    name: String
+    name: string
 }
 
 export class CharacterStats{

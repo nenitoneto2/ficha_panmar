@@ -11,7 +11,8 @@ import { GetTotalLifeDices, GetTotalManaDices, GetTotalKnowledge } from 'src/dat
 import { StatType } from 'src/data/structures/stats';
 import { Proficiencies } from 'src/data/structures/proficiencies';
 import { KnowledgeCollection } from 'src/data/structures/knoledge';
-require('../../../data/db/CharacterDBObject')
+import { CharacterDataStorageService } from 'src/data/sessionStorage/characterSessionStorage';
+import { CharacterService } from 'src/data/db/character.service';
 
 @Component({
   selector: 'app-ficha',
@@ -19,7 +20,40 @@ require('../../../data/db/CharacterDBObject')
   styleUrls: ['./ficha.component.scss']
 })
 export class FichaComponent {
-  cavalo:number =0;
+  characters: {googleID: any, character: LivingCharacter}[] = [];
+  newCharacter: {googleID: any, character: LivingCharacter};
+  requestedCharacter: {googleID: any, character: LivingCharacter};
+
+  constructor(private characterService: CharacterService) {}
+
+  ngOnInit() {
+    this.loadCharacters();
+  }
+
+  loadCharacters() {
+    this.characterService.getCharacters().subscribe((characters) => {
+      this.characters = characters;
+    });
+  }
+
+  addCharacter() {
+    this.characterService.addCharacter("0", this.newCharacter).subscribe(() => {
+      this.loadCharacters();
+      this.newCharacter;
+    });
+  }
+
+  updateCharacter(characterId: string, updatedCharacter: any) {
+    this.characterService.updateCharacter(characterId, updatedCharacter).subscribe(() => {
+      this.loadCharacters();
+    });
+  }
+
+  deleteCharacter(characterId: string) {
+    this.characterService.deleteCharacter(characterId).subscribe(() => {
+      this.loadCharacters();
+    });
+  }
 
   wand: Equipment = {name: "Wand - 1 - Ingestion"}
 
@@ -51,7 +85,18 @@ export class FichaComponent {
     knowledge: GetTotalKnowledge(this.character.rank)
   }
 
+  charStorage : CharacterDataStorageService = new CharacterDataStorageService();
   dice:number = 0
+
+  saveCharacter(){
+    this.newCharacter = {googleID: "0", character: this.sampleCharacter}
+    this.addCharacter()
+  }
+
+  loadCharacter(){
+    this.loadCharacter()
+    this.requestedCharacter = this.characters[0]
+  }
 
   rollCombatant(){
     this.dice = this.sampleCharacter.characterInfo.stats.GetStat(StatType.Combatant).RollStat()
@@ -75,9 +120,5 @@ export class FichaComponent {
 
   rollEloqunce(){
     this.dice = this.sampleCharacter.characterInfo.stats.GetStat(StatType.Eloquence).RollStat()
-  }
-
-  addnumber() {
-    this.cavalo++
   }
 }
