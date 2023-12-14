@@ -1,7 +1,7 @@
 import MagicElement from './elements'
 import Rank from './powerrank'
 import Talents from './talents'
-import Equipment from './equipment'
+import { Item, Weapon } from './itens'
 import Symbols from './symbols'
 import { Proficiencies } from './proficiencies'
 import CombatStyles from './combatstyles'
@@ -17,7 +17,8 @@ export class Character {
     stats: CharacterStats
     talents: Talents[]
     origins: CharacterOrigins
-    equipments: Equipment[]
+    weapons: Weapon[]
+    inventory: Item[]
     symbols: Symbols
     proficiencies: Proficiencies
     knowledges: KnowledgeCollection
