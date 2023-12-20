@@ -9,7 +9,7 @@ import Symbols from 'src/data/structures/symbols';
 import { GetTotalLifeDices, GetTotalManaDices, GetTotalKnowledge } from 'src/data/structures/powerrank';
 import { StatType } from 'src/data/structures/stats';
 import { Proficiencies } from 'src/data/structures/proficiencies';
-import { KnowledgeCollection } from 'src/data/structures/knoledge';
+import { KnowledgeCollection } from 'src/data/structures/knowledge';
 import { CharacterDataStorageService } from 'src/data/sessionStorage/characterSessionStorage';
 import { CharacterService } from 'src/data/db/character.service';
 import { ArcaneEffect, ArcaneWeaponPassive, ArcaneWeapons, ItemType } from 'src/data/structures/itens';

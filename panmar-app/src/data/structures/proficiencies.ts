@@ -1,6 +1,6 @@
 import {Character, CharacterStats} from './character'
 import { StatType } from './stats'
-import { KnowledgeCollection } from './knoledge'
+import { KnowledgeCollection } from './knowledge'
 import RollDice from 'src/resorces/dice'
 import { DiceRollType } from 'src/resorces/dice'
 

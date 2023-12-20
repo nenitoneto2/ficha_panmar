@@ -8,7 +8,7 @@ import CombatStyles from './combatstyles'
 import Magic from './magic'
 import PlayableSpecies from './species'
 import Stat, { StatType } from './stats'
-import { KnowledgeCollection } from './knoledge'
+import { KnowledgeCollection } from './knowledge'
 
 export class Character {
     specie: PlayableSpecies
