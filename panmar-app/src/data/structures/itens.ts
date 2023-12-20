@@ -5,6 +5,7 @@ export class Item{
     name: string
     description: string
     size: number
+    itemType: ItemType = ItemType.Item
 }
 
 export class Weapon extends Item{
@@ -12,6 +13,7 @@ export class Weapon extends Item{
 } 
 
 export class NonMagicWeapon extends Weapon{
+    override itemType: ItemType = ItemType.ArcaneWeapons
     members: number
     damage: {numberOfDices: number, numberOfFaces: number}
     damageType: DamageType
@@ -45,6 +47,7 @@ export enum WeaponPassives{
 }
 
 export class Armor extends Item{
+    override itemType: ItemType = ItemType.Armor
     damageReduction: number
     damageReductionType: DamageType[]
     maxSagaciousBonus: number
@@ -52,6 +55,7 @@ export class Armor extends Item{
 }
 
 export class Shield extends Weapon{
+    override itemType: ItemType = ItemType.Shield
     members: number
     reduction: {numberOfDices: number, numberOfFaces: number}
     passives: ShieldPassives
@@ -65,21 +69,22 @@ export enum ShieldPassives{
 }
 
 export class ArcaneWeapons extends Weapon{
+    override itemType: ItemType = ItemType.ArcaneWeapons
     arcaneEffect : ArcaneEffect
     passive : ArcaneWeaponPassive
 }
 
 export enum ArcaneEffect{
-    Duration,
-    Range,
-    ActionSpeed,
-    Transmute,
-    SecondaryType,
-    SpaceForEffect,
-    Restriction,
-    BaseValueIncrease,
-    PrimaryType,
-    AuxiliaryType
+    Duration = 0,
+    Range = 1,
+    ActionSpeed = 2,
+    Transmute = 3,
+    SecondaryType = 4,
+    SpaceForEffect = 5,
+    Restriction = 6,
+    BaseValueIncrease = 7,
+    PrimaryType = 8,
+    AuxiliaryType = 9
 }
 
 export enum ArcaneWeaponPassive{
@@ -91,6 +96,7 @@ export enum ArcaneWeaponPassive{
 }
 
 export class MusicalInstrumental extends Item{
+    override itemType: ItemType = ItemType.MusicalInstrumental
     type: MusicalInstrumentalType
     range: number
     art: ArtType
@@ -106,4 +112,19 @@ export enum ArtType{
     Music,
     Theater,
     Dance,
+}
+
+export class CraftingItem extends Item{
+    override itemType: ItemType = ItemType.CraftingItem
+    stars: number
+}
+
+export enum ItemType{
+    Item = 0,
+    NonMagicWeapon = 1,
+    Armor = 2,
+    Shield = 3,
+    ArcaneWeapons = 4,
+    MusicalInstrumental = 5,
+    CraftingItem = 6
 }
