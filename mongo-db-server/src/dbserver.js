@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
-const port = 3000;
+const port = 3001;
 const URL = "mongodb://127.0.0.1:27017/pan-mar/"
 
 app.use(express.json());

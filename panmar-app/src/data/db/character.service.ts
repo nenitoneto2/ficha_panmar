@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CharacterService {
-  private apiUrl = 'http://localhost:3000/api/characters';
+  private apiUrl = 'http://localhost:3001/api/characters';
 
   constructor(private http: HttpClient) {}
 
