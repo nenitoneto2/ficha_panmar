@@ -9,7 +9,10 @@ enum Talents{
     Aim,
     Meditate,
     MagicalLearn,
-    SmallTricks
+    SmallTricks,
+    ArtConnoisseur,
+    WorldTales,
+    ImageControl,
 }
 
 export default Talents

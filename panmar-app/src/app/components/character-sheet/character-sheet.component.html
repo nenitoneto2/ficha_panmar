@@ -5,20 +5,49 @@
     <div>
       <h3>Character Information</h3>
       <p><strong>Name:</strong> {{ livingCharacher.characterInfo.name }}</p>
-      <p><strong>Species:</strong> {{ livingCharacher.characterInfo.specie }}</p>
-      <p><strong>Origins:</strong> {{ livingCharacher.characterInfo.origins }}</p>
+      <p><strong>Species:</strong> {{ getSpeciesName(livingCharacher.characterInfo.specie) }}</p>
+      <p><strong>Origins:</strong> {{ getCharacterOriginName(livingCharacher.characterInfo.origins) }}</p>
+      <p><strong>Rank:</strong> {{ getRankName(livingCharacher.characterInfo.rank) }}</p>
       <!-- Add other Character properties as needed -->
     </div>
   
+    <h3>Character Stats</h3>
+    <p><strong>Combatant:</strong> {{ getCombatant() }}</p>
+    <p><strong>Magic:</strong> {{ getMagic()}}</p>
+    <p><strong>Sagacious:</strong> {{ getSagacious() }}</p>
+    <p><strong>Create:</strong> {{ getCreate() }}</p>
+    <p><strong>Protector:</strong> {{ getProtector()}}</p>
+    <p><strong>Eloquence:</strong> {{ getEloquence()}}</p>
+
+    <!-- Display Character Talents -->
+    <h3>Talents</h3>
+    <ul>
+      <li *ngFor="let talent of getTalents()">{{ getTalentName(talent) }}</li>
+    </ul>
+
     <div>
       <h3>Living Character Information</h3>
-      <p><strong>Life Dices:</strong> {{ livingCharacher.lifeDices }}</p>
-      <p><strong>Mana Dices:</strong> {{ livingCharacher.manaDices }}</p>
+        <p>
+            <strong>Life Dices:</strong> {{ livingCharacher.lifeDices }}
+            |
+            <strong>Mana Dices:</strong> {{ livingCharacher.manaDices }}
+        </p>
+
       <p><strong>Talent Points:</strong> {{ livingCharacher.talentPoints }}</p>
-      <p><strong>Max Life:</strong> {{ livingCharacher.maxLife }}</p>
-      <p><strong>Current Life:</strong> {{ livingCharacher.currentLife }}</p>
-      <p><strong>Max Mana:</strong> {{ livingCharacher.maxMana }}</p>
-      <p><strong>Current Mana:</strong> {{ livingCharacher.currentMana }}</p>
+      
+        <p>
+            <strong>Current Life:</strong> {{ livingCharacher.currentLife }} 
+            | 
+            <strong>Max Life:</strong> {{ livingCharacher.maxLife }}
+        </p>
+
+        <p>
+            <strong>Current Mana:</strong> {{ livingCharacher.currentMana }}
+        |
+            <strong>Max Mana:</strong> {{ livingCharacher.maxMana }}
+        </p>
+      
+      
       <p><strong>Knowledge:</strong> {{ livingCharacher.knowledge }}</p>
       <!-- Add other LivingCharacter properties as needed -->
     </div>

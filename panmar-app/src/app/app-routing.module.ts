@@ -6,6 +6,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { CharacterSheetComponent } from './components/character-sheet/character-sheet.component';
+import { FichaComponent } from './components/ficha/ficha.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/ficha', pathMatch: 'full' },
