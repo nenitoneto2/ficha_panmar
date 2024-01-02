@@ -21,7 +21,7 @@ export class Character {
     inventory: Item[]
     symbols: Symbols
     proficiencies: Proficiencies
-    knowledges: KnowledgeCollection
+    //knowledges: KnowledgeCollection
     styles: CombatStyles[]
     magics: Magic[]
     name: string

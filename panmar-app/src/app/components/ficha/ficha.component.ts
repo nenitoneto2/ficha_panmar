@@ -77,7 +77,7 @@ export class FichaComponent {
     proficiencies: new Proficiencies([]),
     styles: [],
     magics: [],
-    knowledges: new KnowledgeCollection(),
+    //knowledges: new KnowledgeCollection(),
     name: "Aurelius Nocturne"
   }
 

@@ -15,6 +15,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { FichaComponent } from './components/ficha/ficha.component';
+import { CharacterSheetComponent } from './components/character-sheet/character-sheet.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FichaComponent } from './components/ficha/ficha.component';
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    FichaComponent
+    FichaComponent,
+    CharacterSheetComponent
   ],
   imports: [
     BrowserModule,
