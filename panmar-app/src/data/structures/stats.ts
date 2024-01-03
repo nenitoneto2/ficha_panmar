@@ -19,6 +19,6 @@ export default class Stat{
     }
 
     RollStat(){
-        return RollDice(1, 20, this.modifier).result
+        return RollDice(1, 20, this.modifier)
     }
 }

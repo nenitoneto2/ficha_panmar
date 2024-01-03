@@ -10,6 +10,7 @@ import MagicElement from 'src/data/structures/elements';
 import { Proficiencies } from 'src/data/structures/proficiencies';
 import { KnowledgeCollection } from 'src/data/structures/knowledge';
 import { StatType } from 'src/data/structures/stats';
+import { DiceRollInfo } from 'src/resorces/dice';
 
 @Component({
   selector: 'app-character-sheet',
@@ -52,6 +53,8 @@ export class CharacterSheetComponent {
     currentMana: 13,
     knowledge: GetTotalKnowledge(this.character.rank)
     }
+
+    diceInfo: DiceRollInfo = new DiceRollInfo()
 
   // Method to convert CharacterOrigins enum value to string
   getCharacterOriginName(origin: CharacterOrigins): string {
@@ -104,4 +107,29 @@ export class CharacterSheetComponent {
   getTalentName(talent: Talents): string {
     return Talents[talent];
   }
+
+  rollCombatant(){
+    this.diceInfo = this.livingCharacher.characterInfo.stats.GetStat(StatType.Combatant).RollStat()
+  }
+
+  rollMagic(){
+    this.diceInfo = this.livingCharacher.characterInfo.stats.GetStat(StatType.Magic).RollStat()
+  }
+
+  rollSagacious(){
+    this.diceInfo = this.livingCharacher.characterInfo.stats.GetStat(StatType.Sagacious).RollStat()
+  }
+
+  rollCreate(){
+    this.diceInfo = this.livingCharacher.characterInfo.stats.GetStat(StatType.Create).RollStat()
+  }
+
+  rollProtector(){
+    this.diceInfo = this.livingCharacher.characterInfo.stats.GetStat(StatType.Protector).RollStat()
+  }
+
+  rollEloqunce(){
+    this.diceInfo = this.livingCharacher.characterInfo.stats.GetStat(StatType.Eloquence).RollStat()
+  }
+
 }

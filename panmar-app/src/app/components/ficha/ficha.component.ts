@@ -13,6 +13,7 @@ import { KnowledgeCollection } from 'src/data/structures/knowledge';
 import { CharacterDataStorageService } from 'src/data/sessionStorage/characterSessionStorage';
 import { CharacterService } from 'src/data/db/character.service';
 import { ArcaneEffect, ArcaneWeaponPassive, ArcaneWeapons, ItemType } from 'src/data/structures/itens';
+import { DiceRollInfo } from 'src/resorces/dice';
 
 @Component({
   selector: 'app-ficha',
@@ -94,7 +95,7 @@ export class FichaComponent {
   }
 
   charStorage : CharacterDataStorageService = new CharacterDataStorageService();
-  dice:number = 0
+  dice:DiceRollInfo = new DiceRollInfo()
 
   saveCharacter(){
     this.newCharacter = {googleID: "0", character: this.sampleCharacter}

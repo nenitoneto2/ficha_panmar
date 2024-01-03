@@ -12,12 +12,12 @@
     </div>
   
     <h3>Character Stats</h3>
-    <p><strong>Combatant:</strong> {{ getCombatant() }}</p>
-    <p><strong>Magic:</strong> {{ getMagic()}}</p>
-    <p><strong>Sagacious:</strong> {{ getSagacious() }}</p>
-    <p><strong>Create:</strong> {{ getCreate() }}</p>
-    <p><strong>Protector:</strong> {{ getProtector()}}</p>
-    <p><strong>Eloquence:</strong> {{ getEloquence()}}</p>
+    <p><strong>Combatant:</strong> {{ getCombatant() }} <button (click)="rollCombatant()">Roll</button></p>
+    <p><strong>Magic:</strong> {{ getMagic()}} <button (click)="rollMagic()">Roll</button></p>
+    <p><strong>Sagacious:</strong> {{ getSagacious() }} <button (click)="rollSagacious()">Roll</button></p>
+    <p><strong>Create:</strong> {{ getCreate() }} <button (click)="rollCreate()">Roll</button></p>
+    <p><strong>Protector:</strong> {{ getProtector()}} <button (click)="rollProtector()">Roll</button></p>
+    <p><strong>Eloquence:</strong> {{ getEloquence()}} <button (click)="rollEloqunce()">Roll</button></p>
 
     <!-- Display Character Talents -->
     <h3>Talents</h3>
@@ -50,6 +50,23 @@
       
       <p><strong>Knowledge:</strong> {{ livingCharacher.knowledge }}</p>
       <!-- Add other LivingCharacter properties as needed -->
+      <h2>Dice Roll Information</h2>
+
+        <div>
+          <p><strong>Number of Faces:</strong> {{ diceInfo.numberOfFaces }}</p>
+          <p><strong>Roll Type:</strong> {{ diceInfo.rollType }}</p>
+          <p><strong>Modifier:</strong> {{ diceInfo.modifier }}</p>
+
+          <h3>Standard Roll</h3>
+          <p><strong>Array:</strong> {{ diceInfo.standardRollArray.join(', ') }}</p>
+          <p><strong>Total:</strong> {{ diceInfo.standardRollTotal }}</p>
+
+          <h3>Complementary Roll</h3>
+          <p><strong>Array:</strong> {{ diceInfo.complementaryRollArray.join(', ') }}</p>
+          <p><strong>Total:</strong> {{ diceInfo.complementaryRollTotal }}</p>
+
+          <p><strong>Result:</strong> {{ diceInfo.result }}</p>
+        </div>
     </div>
   </div>
   
