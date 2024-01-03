@@ -1,6 +1,10 @@
 <!-- character-sheet.component.html -->
 <div>
-    <h2>Character Sheet</h2>
+  <div class="container">
+    <div class="side-by-side">
+      <div class="section">
+        <!-- Content for the first section -->
+        <h2>Character Sheet</h2>
   
     <div>
       <h3>Character Information</h3>
@@ -8,25 +12,21 @@
       <p><strong>Species:</strong> {{ getSpeciesName(livingCharacher.characterInfo.specie) }}</p>
       <p><strong>Origins:</strong> {{ getCharacterOriginName(livingCharacher.characterInfo.origins) }}</p>
       <p><strong>Rank:</strong> {{ getRankName(livingCharacher.characterInfo.rank) }}</p>
-      <!-- Add other Character properties as needed -->
     </div>
-  
-    <h3>Character Stats</h3>
-    <p><strong>Combatant:</strong> {{ getCombatant() }} <button (click)="rollCombatant()">Roll</button></p>
-    <p><strong>Magic:</strong> {{ getMagic()}} <button (click)="rollMagic()">Roll</button></p>
-    <p><strong>Sagacious:</strong> {{ getSagacious() }} <button (click)="rollSagacious()">Roll</button></p>
-    <p><strong>Create:</strong> {{ getCreate() }} <button (click)="rollCreate()">Roll</button></p>
-    <p><strong>Protector:</strong> {{ getProtector()}} <button (click)="rollProtector()">Roll</button></p>
-    <p><strong>Eloquence:</strong> {{ getEloquence()}} <button (click)="rollEloqunce()">Roll</button></p>
+      </div>
+      <div class="section">
+        <!-- Content for the second section -->
+        <h3>Character Stats</h3>
+          <p><strong>Combatant:</strong> {{ getCombatant() }} <button (click)="rollCombatant()">Roll</button></p>
+          <p><strong>Magic:</strong> {{ getMagic()}} <button (click)="rollMagic()">Roll</button></p>
+          <p><strong>Sagacious:</strong> {{ getSagacious() }} <button (click)="rollSagacious()">Roll</button></p>
+          <p><strong>Create:</strong> {{ getCreate() }} <button (click)="rollCreate()">Roll</button></p>
+          <p><strong>Protector:</strong> {{ getProtector()}} <button (click)="rollProtector()">Roll</button></p>
+          <p><strong>Eloquence:</strong> {{ getEloquence()}} <button (click)="rollEloqunce()">Roll</button></p>
+      </div>
 
-    <!-- Display Character Talents -->
-    <h3>Talents</h3>
-    <ul>
-      <li *ngFor="let talent of getTalents()">{{ getTalentName(talent) }}</li>
-    </ul>
-
-    <div>
-      <h3>Living Character Information</h3>
+      <div class="section">
+        <h3>Living Character Information</h3>
         <p>
             <strong>Life Dices:</strong> {{ livingCharacher.lifeDices }}
             |
@@ -49,24 +49,61 @@
       
       
       <p><strong>Knowledge:</strong> {{ livingCharacher.knowledge }}</p>
-      <!-- Add other LivingCharacter properties as needed -->
-      <h2>Dice Roll Information</h2>
+      </div>
 
+      <div class="section">
+        <h2>Dice Roll Information</h2>
+        <div class="container">
+          <div class="side-by-side">
+            <div class="section">
+              <p><strong>Number of Faces:</strong> {{ diceInfo.numberOfFaces }}</p>
+              <p><strong>Roll Type:</strong> {{ diceInfo.rollType }}</p>
+              <p><strong>Modifier:</strong> {{ diceInfo.modifier }}</p>
+            </div>
+            <div class="section">
+              <h3>Standard Roll</h3>
+              <p><strong>Array:</strong> {{ diceInfo.standardRollArray.join(', ') }}</p>
+              <p><strong>Total:</strong> {{ diceInfo.standardRollTotal }}</p>
+            </div>
+            <div class="section">
+              <p><strong>Complementary Roll</strong></p>
+              <p><strong>Array:</strong> {{ diceInfo.complementaryRollArray.join(', ') }}</p>
+              <p><strong>Total:</strong> {{ diceInfo.complementaryRollTotal }}</p>
+            </div>
+          </div>
+        </div>
         <div>
-          <p><strong>Number of Faces:</strong> {{ diceInfo.numberOfFaces }}</p>
-          <p><strong>Roll Type:</strong> {{ diceInfo.rollType }}</p>
-          <p><strong>Modifier:</strong> {{ diceInfo.modifier }}</p>
-
-          <h3>Standard Roll</h3>
-          <p><strong>Array:</strong> {{ diceInfo.standardRollArray.join(', ') }}</p>
-          <p><strong>Total:</strong> {{ diceInfo.standardRollTotal }}</p>
-
-          <h3>Complementary Roll</h3>
-          <p><strong>Array:</strong> {{ diceInfo.complementaryRollArray.join(', ') }}</p>
-          <p><strong>Total:</strong> {{ diceInfo.complementaryRollTotal }}</p>
-
           <p><strong>Result:</strong> {{ diceInfo.result }}</p>
         </div>
+      </div>
+    </div>
+  </div>
+    
+  
+    
+
+    <!-- Display Character Talents -->
+    <h3>Talents</h3>
+    <ul>
+      <li *ngFor="let talent of getTalents()">{{ getTalentName(talent) }}</li>
+    </ul>
+
+    <div>
+      
+
+
+      <h2>Proficiencies</h2>
+
+        <div *ngFor="let proficiency of getProficiencies()">
+          <p> <strong>{{ getProficiencyName(proficiency.type) }} - </strong>
+              <strong>Modifier:</strong> {{ proficiency.GetModifier(getCharacterStats(), getCharacterKnowledges()) }}  
+              <button (click)="rollProficiency(proficiency.type)">Roll Proficiency</button>
+          </p>
+          
+        </div>
+
+      <!-- Add other LivingCharacter properties as needed -->
+      
     </div>
   </div>
   

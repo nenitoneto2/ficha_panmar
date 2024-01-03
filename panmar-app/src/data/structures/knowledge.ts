@@ -42,6 +42,21 @@ export class KnowledgeCollection {
     }
   }
 
+  SetKnowledgeProficiencyModfier(type: ProficienciesType, mod:number) {
+    for (let i = 0; i < this.knowledges.length; i++) {
+      console.log(i);
+      if (this.knowledges[i].type != KnowledgeType.Proficiency) {
+        continue;
+      }
+
+      if (
+        (this.knowledges[i] as ProficiencyKnowledge).proficiency == type
+      ) {
+        (this.knowledges[i] as ProficiencyKnowledge).level = mod;
+      }
+    }
+  }
+
   GetKnowledgeProficiencyModfier(type: ProficienciesType) {
     for (let i = 0; i < this.knowledges.length; i++) {
       console.log(i);

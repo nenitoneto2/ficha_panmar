@@ -7,10 +7,11 @@ import LivingCharacter, { CharacterOrigins, CharacterStats } from 'src/data/stru
 import { Character } from 'src/data/structures/character';
 import PlayableSpecies from 'src/data/structures/species';
 import MagicElement from 'src/data/structures/elements';
-import { Proficiencies } from 'src/data/structures/proficiencies';
+import { Proficiencies, Proficiency } from 'src/data/structures/proficiencies';
 import { KnowledgeCollection } from 'src/data/structures/knowledge';
 import { StatType } from 'src/data/structures/stats';
 import { DiceRollInfo } from 'src/resorces/dice';
+import ProficienciesType from 'src/data/structures/proficiencies';
 
 @Component({
   selector: 'app-character-sheet',
@@ -35,12 +36,13 @@ export class CharacterSheetComponent {
     weapons: [],
     inventory: [],
     symbols: Symbols.None,
-    proficiencies: new Proficiencies([]),
+    proficiencies: new Proficiencies(),
     styles: [],
     magics: [],
     knowledges: new KnowledgeCollection(),
     name: "Aurelius Nocturne"
     }
+
 
   livingCharacher: LivingCharacter ={
     characterInfo: this.character,
@@ -72,30 +74,30 @@ export class CharacterSheetComponent {
   }
 
   getCombatant() : number{
-    return this.getCharacterStats(StatType.Combatant).modifier
+    return this.getCharacterStat(StatType.Combatant).modifier
   }
 
   getMagic() : number{
-    return this.getCharacterStats(StatType.Magic).modifier
+    return this.getCharacterStat(StatType.Magic).modifier
   }
 
   getSagacious() : number{
-    return this.getCharacterStats(StatType.Sagacious).modifier
+    return this.getCharacterStat(StatType.Sagacious).modifier
   }
 
   getCreate() : number{
-    return this.getCharacterStats(StatType.Create).modifier
+    return this.getCharacterStat(StatType.Create).modifier
   }
 
   getProtector() : number{
-    return this.getCharacterStats(StatType.Protector).modifier
+    return this.getCharacterStat(StatType.Protector).modifier
   }
 
   getEloquence() : number{
-    return this.getCharacterStats(StatType.Eloquence).modifier
+    return this.getCharacterStat(StatType.Eloquence).modifier
   }
 
-  getCharacterStats(statType : StatType){
+  getCharacterStat(statType : StatType){
     return this.livingCharacher.characterInfo.stats.GetStat(statType)
   }
 
@@ -130,6 +132,31 @@ export class CharacterSheetComponent {
 
   rollEloqunce(){
     this.diceInfo = this.livingCharacher.characterInfo.stats.GetStat(StatType.Eloquence).RollStat()
+  }
+
+  getProficiencies(){
+    return this.livingCharacher.characterInfo.proficiencies.proficiencies
+  }
+
+  // Method to get the name of a proficiency
+  getProficiencyName(type: ProficienciesType): string {
+    // You might have a utility function or a map to get the name from the enum
+    return ProficienciesType[type];
+  }
+
+  // Method to roll proficiency for a specific type
+  rollProficiency(type: ProficienciesType): void {
+    this.diceInfo = this.livingCharacher.characterInfo.proficiencies.
+    RollProficiency(type, this.getCharacterStats(), this.getCharacterKnowledges());
+
+  }
+
+  getCharacterStats(){
+    return this.livingCharacher.characterInfo.stats
+  }
+
+  getCharacterKnowledges(){
+    return this.livingCharacher.characterInfo.knowledges
   }
 
 }

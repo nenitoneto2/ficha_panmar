@@ -114,13 +114,29 @@ export class Proficiency{
 }
 
 export class Proficiencies{
-    proficiencies: Proficiency[] = []
-
-    constructor(proficiencies: Proficiency[]){
-        for(let p in ProficienciesType){
-            this.proficiencies.push( new Proficiency(parseProficiency(p)))
-        }
-    }
+    proficiencies: Proficiency[] = [
+        new Proficiency(ProficienciesType.Acrobacy),
+        new Proficiency(ProficienciesType.Act),
+        new Proficiency(ProficienciesType.Arcane),
+        new Proficiency(ProficienciesType.Athletics),
+        new Proficiency(ProficienciesType.Charisma),
+        new Proficiency(ProficienciesType.Concentration),
+        new Proficiency(ProficienciesType.Create),
+        new Proficiency(ProficienciesType.Cultural), 
+        new Proficiency(ProficienciesType.Martial),
+        new Proficiency(ProficienciesType.Medicine),
+        new Proficiency(ProficienciesType.Meridian),
+        new Proficiency(ProficienciesType.Monsters),
+        new Proficiency(ProficienciesType.ObtainInformation),
+        new Proficiency(ProficienciesType.Perception),
+        new Proficiency(ProficienciesType.Presence),
+        new Proficiency(ProficienciesType.SleightOfHand),
+        new Proficiency(ProficienciesType.Stealth),
+        new Proficiency(ProficienciesType.Survival),
+        new Proficiency(ProficienciesType.Training),
+        new Proficiency(ProficienciesType.Will),
+        new Proficiency(ProficienciesType.World)   
+    ]
 
     GetProficiencyModifier(type: ProficienciesType, stats: CharacterStats, knowledge:KnowledgeCollection){
         return this.proficiencies.find(p => p.type == type).GetModifier(stats, knowledge)

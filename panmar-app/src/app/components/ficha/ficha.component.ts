@@ -75,7 +75,7 @@ export class FichaComponent {
     weapons: [this.wand],
     inventory: [],
     symbols: Symbols.None,
-    proficiencies: new Proficiencies([]),
+    proficiencies: new Proficiencies(),
     styles: [],
     magics: [],
     knowledges: new KnowledgeCollection(),
