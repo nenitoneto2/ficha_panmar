@@ -4,11 +4,14 @@ import MagicElement from "./elements"
 interface Magic{
     name: String,
     element: MagicElement,
-    type: MagicType,
+    mainType: MagicType,
+    secondaryType: MagicType[],
+    auxiliaryType: MagicType[]
     rangeType: RangeType,
     rangeValue: number,
-    duration: String,
+    duration: DurationType,
     actionSpeed: ActionSpeed,
+    actionSpeedValue: number,
     effectConsequence: Effect[]
     restrictions: Restriction[]
     elementalEffect: Text   // this will probabily change once thing start to call method
@@ -163,6 +166,10 @@ enum RestrictionType{
     Art,
     LossOfControl,
     Domain
+}
+
+enum DurationType{
+    Instantaneous = 0,
 }
 
 interface Restriction{

@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class CharacterService {
+export default class CharacterService {
+
   private apiUrl = 'http://localhost:3001/api/characters';
 
   constructor(private http: HttpClient) {}

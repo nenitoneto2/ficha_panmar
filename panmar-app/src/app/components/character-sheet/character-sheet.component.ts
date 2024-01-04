@@ -12,14 +12,67 @@ import { KnowledgeCollection } from 'src/data/structures/knowledge';
 import { StatType } from 'src/data/structures/stats';
 import { DiceRollInfo } from 'src/resorces/dice';
 import ProficienciesType from 'src/data/structures/proficiencies';
+import CharacterService from 'src/data/db/character.service';
 
 @Component({
   selector: 'app-character-sheet',
   templateUrl: './character-sheet.component.html',
-  styleUrls: ['./character-sheet.component.scss']
+  styleUrls: ['./character-sheet.component.scss'],
+  providers: [CharacterService]
 })
 export class CharacterSheetComponent {
   
+  /*characters: {googleID: any, character: LivingCharacter}[] = [];
+  newCharacter: {googleID: any, character: LivingCharacter};
+  requestedCharacter: {googleID: any, character: LivingCharacter};
+
+  constructor(private characterService: CharacterService) {}
+
+  ngOnInit() {
+    this.loadCharacters();
+  }
+
+  loadCharacter(){
+    this.loadCharacters()
+
+    if(this.characters.length > 0){
+      this.requestedCharacter = this.characters[0]
+    }
+   
+  }
+
+  loadCharacters() {
+    this.characterService.getCharacters().subscribe((characters) => {
+      this.characters = characters;
+    });
+  }
+
+  addCharacter() {
+      this.characterService.addCharacter("0", this.livingCharacher).subscribe(() => {
+      this.loadCharacters();
+      this.newCharacter;
+    });
+  }
+
+  updateCharacter(characterId: string, updatedCharacter: any) {
+    this.characterService.updateCharacter(characterId, updatedCharacter).subscribe(() => {
+      this.loadCharacters();
+    });
+  }
+
+  deleteCharacter(characterId: string) {
+    this.characterService.deleteCharacter(characterId).subscribe(() => {
+      this.loadCharacters();
+    });
+  }
+
+  saveCharacter(){
+    this.newCharacter = {googleID: "0", character: this.livingCharacher}
+    this.updateCharacter("0", this.livingCharacher)
+  }
+
+  */
+
   character: Character = {
     specie: PlayableSpecies.Hanaku,
     element: [MagicElement.Lightning, MagicElement.Reflection],
