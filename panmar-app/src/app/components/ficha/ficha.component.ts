@@ -5,14 +5,14 @@ import PlayableSpecies from 'src/data/structures/species';
 import MagicElement from 'src/data/structures/elements';
 import Rank from 'src/data/structures/powerrank';
 import Talents from 'src/data/structures/talents';
-import Equipment from 'src/data/structures/equipment';
 import Symbols from 'src/data/structures/symbols';
 import { GetTotalLifeDices, GetTotalManaDices, GetTotalKnowledge } from 'src/data/structures/powerrank';
 import { StatType } from 'src/data/structures/stats';
 import { Proficiencies } from 'src/data/structures/proficiencies';
-import { KnowledgeCollection } from 'src/data/structures/knoledge';
+import { KnowledgeCollection } from 'src/data/structures/knowledge';
 import { CharacterDataStorageService } from 'src/data/sessionStorage/characterSessionStorage';
 import { CharacterService } from 'src/data/db/character.service';
+import { ArcaneEffect, ArcaneWeaponPassive, ArcaneWeapons, ItemType } from 'src/data/structures/itens';
 
 @Component({
   selector: 'app-ficha',
@@ -55,7 +55,14 @@ export class FichaComponent {
     });
   }
 
-  wand: Equipment = {name: "Wand - 1 - Ingestion"}
+  wand: ArcaneWeapons = { 
+                          name: "Wand", 
+                          description: "Toque a Distancia",
+                          size: 1, 
+                          arcaneEffect: ArcaneEffect.Range, 
+                          passive: ArcaneWeaponPassive.MagicAim,
+                          itemType: ItemType.ArcaneWeapons
+                        }
 
   character: Character = {
     specie: PlayableSpecies.Hanaku,
@@ -64,7 +71,8 @@ export class FichaComponent {
     stats: new CharacterStats(0, 0, 0, 0, 0, 1),
     talents: [Talents.Meditate, Talents.MagicalLearn, Talents.SmallTricks],
     origins: CharacterOrigins.OrchidInstitute,
-    equipments: [this.wand],
+    weapons: [this.wand],
+    inventory: [],
     symbols: Symbols.None,
     proficiencies: new Proficiencies([]),
     styles: [],

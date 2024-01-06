@@ -1,4 +1,3 @@
-import { range } from "rxjs"
 import ProficienciesType, { parseProficiency } from "./proficiencies"
 
 export enum KnowledgeType{
@@ -35,15 +34,16 @@ export class KnowledgeCollection{
     }
 
     GetKnowledgeProficiencyModfier(type: ProficienciesType){
-        for(let k in range(0, this.knowledges.length)){
-            if(this.knowledges[k].type != KnowledgeType.Proficiency){
+        for (let i = 0; i <= this.knowledges.length; i++) {
+            console.log(i);
+            if(this.knowledges[i].type != KnowledgeType.Proficiency){
                 continue
             }
 
-            if((this.knowledges[k] as ProficiencyKnowledge).proficiency == type){
-                return (this.knowledges[k] as ProficiencyKnowledge).level
+            if((this.knowledges[i] as ProficiencyKnowledge).proficiency == type){
+                return (this.knowledges[i] as ProficiencyKnowledge).level
             }
-        }
+          }
 
         return 0
     }
