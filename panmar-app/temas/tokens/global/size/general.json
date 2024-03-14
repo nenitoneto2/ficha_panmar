@@ -1,0 +1,21 @@
+{
+  "size": {
+    "general": {
+      "smallest" : {
+        "value": "0.1"
+      },
+      "small" : {
+        "value": "0.5"
+      },
+      "medium": {
+        "value": "1"
+      },
+      "large" : {
+        "value": "3"
+      },
+      "largest" : {
+        "value": "5"
+      }
+    }
+  }
+}

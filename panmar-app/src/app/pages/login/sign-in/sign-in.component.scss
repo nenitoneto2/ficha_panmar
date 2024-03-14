@@ -1,0 +1,65 @@
+
+@import '../../../../styles.scss';
+.main-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+}
+
+.login-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem;
+}
+
+.btn {
+	background: $color-main-medium;
+	border-radius: $size-general-medium;
+	color: $color-primary;
+	font-weight: 400;
+	width: 100%;
+    margin: 1rem;
+    padding: $size-general-smallest $size-general-smallest $size-general-smallest $size-general-smallest;
+	font-size: $size-font-large;
+	border-top: solid $color-primary $size-general-smallest;
+	border-left: solid $color-primary $size-general-smallest;
+	border-right: solid $color-primary $size-general-smallest;
+	border-bottom: solid $color-primary $size-general-smallest;
+    
+
+	&:hover {
+		border: solid $color-secondary $size-general-smallest;
+		box-shadow:
+		inset 0 -3em 3em $color-main-medium,
+		0 0 0 2px $color-base;
+	}
+}
+.btn-google {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 10px 16px;
+border: none;
+border-radius: 4px;
+font-size: 16px;
+font-weight: bold;
+text-align: center;
+cursor: pointer;
+
+/* Google-like colors and background */
+background-color: #ffffff; /* White background */
+color: #757575; /* Gray text color */
+box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 2px 2px rgba(0, 0, 0, 0.25);
+
+/* Include a Google logo image (replace with your actual path) */
+background-image: url("../../../../assets/icons/partners/google.svg");
+background-repeat: no-repeat;
+background-position: 10px center; /* Adjust position as needed */
+
+/* Adjust spacing between text and logo */
+padding-left: 40px; /* Adjust based on logo size */
+}

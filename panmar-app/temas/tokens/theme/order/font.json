@@ -1,0 +1,8 @@
+{
+  "color": {
+    "font": {
+      "primary": { "value": "{color.primary.value}" },
+      "secondary" : { "value": "{color.secondary.value}" }
+    }
+  }
+}
