@@ -1,0 +1,12 @@
+<section class="section-center">
+        <div class="authBlock">
+            <h3>Sign Up</h3>
+                <input type="email" class="element" placeholder="Email Address" #userEmail required />
+                <input type="password" class="element" placeholder="Password" #userPwd required />
+                <input type="button" class="element" value="Sign Up"
+                    (click)="authService.SignUp(userEmail.value, userPwd.value)" />
+                <span class="or"><span class="orInner">Or</span></span>
+                <span>Already have an account?
+                    <span routerLink="/sign-in">Log In</span></span>
+        </div>
+    </section>

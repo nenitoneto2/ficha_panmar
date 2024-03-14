@@ -1,0 +1,57 @@
+@import '../../../../temas/build/scss/variables';
+
+.divide {
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow:column;
+    background-color: $color-base;
+}
+
+.darkest {
+    margin: $size-general-largest;
+    padding: $size-general-largest;
+    border: solid $color-secondary $size-general-smallest;
+    font-size: $size-font-largest;
+    background-color: $color-main-darkest ;
+    color: $color-base;
+}
+
+
+.dark {
+    margin: $size-general-large;
+    padding: $size-general-large;
+    font-size: $size-font-large;
+    border: solid $color-secondary $size-general-smallest;
+    background-color: $color-main-dark ;
+    color: $color-base;
+}
+
+.commom {
+    margin: $size-general-medium;
+    padding: $size-general-medium;
+    font-size: $size-font-medium;
+    border: solid $color-secondary $size-general-smallest;
+    background-color: $color-main-medium ;
+    color: $color-base;
+}
+
+.light {
+    margin: $size-general-small;
+    padding: $size-general-small;
+    font-size: $size-font-small;
+    border: solid $color-secondary $size-general-smallest;
+    background-color: $color-main-light ;
+    color: $color-primary;
+}
+
+.lightest {
+    margin: $size-general-smallest;
+    padding: $size-general-smallest;
+    font-size: $size-general-small;
+    border: solid $color-secondary $size-general-smallest;
+    background-color: $color-main-lightest ;
+    color: $color-primary;
+}

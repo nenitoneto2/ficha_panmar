@@ -9,32 +9,92 @@ import { environment } from '../environments/environment.dev';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
-import { FichaComponent } from './components/ficha/ficha.component';
+import { SignInComponent } from './pages/login/sign-in/sign-in.component';
+import { SignUpComponent } from './pages/login/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './pages/login/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './pages/login/verify-email/verify-email.component';
+import { HomeComponent } from './pages/home/home.component';
+import { HeaderComponent } from './components/header/header.component';
+import { PersonagensComponent } from './pages/personagens/personagens.component';
+import { WikiComponent } from './pages/wiki/wiki.component';
+import { ButtonComponent } from './components/header/button-header/button.component';
+import { TokenTestComponent } from './components/token-test/token-test.component';
+import { IconCustomComponent } from './components/icon-custom/icon-custom.component';
+import { ElrondComponent } from './pages/elrold/elrond.component';
+import { MagicBoxComponent } from './components/magic-box/magic-box.component';
+import { HttpClientModule } from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatInputModule} from '@angular/material/input';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSliderModule} from '@angular/material/slider';
+import {AsyncPipe} from '@angular/common';
+import { ElroldMagicComponent } from './pages/elrold/magic/elrold-magic/elrold-magic.component';
+import { ElroldMainComponent } from './pages/elrold/magic/elrold-main/elrold-main.component';
+import { ElroldSecondaryComponent } from './pages/elrold/magic/elrold-secondary/elrold-secondary.component';
+import { ElroldRangeComponent } from './pages/elrold/magic/elrold-range/elrold-range.component';
+import { ElroldDurationComponent } from './pages/elrold/magic/elrold-duration/elrold-duration.component';
+import { ElroldActionSpeedComponent } from './pages/elrold/magic/elrold-action-speed/elrold-action-speed.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
     SignInComponent,
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    FichaComponent
+    HomeComponent,
+    HeaderComponent,
+    PersonagensComponent,
+    WikiComponent,
+    ButtonComponent,
+    TokenTestComponent,
+    IconCustomComponent,
+    ElrondComponent,
+    MagicBoxComponent,
+    ElroldMagicComponent,
+    ElroldMainComponent,
+    ElroldSecondaryComponent,
+    ElroldRangeComponent,
+    ElroldDurationComponent,
+    ElroldActionSpeedComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatFormFieldModule,
+    MatCheckboxModule,
+    MatToolbarModule,
+    MatInputModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    HttpClientModule,
+    MatChipsModule,
+    MatSidenavModule,
+    MatFormFieldModule,
+    MatChipsModule,
+    MatIconModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    AsyncPipe,
+    MatButtonModule,
+    MatTabsModule,
+    MatBadgeModule,
+    MatSliderModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
