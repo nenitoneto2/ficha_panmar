@@ -1,0 +1,9 @@
+[
+    { "name": "Pessoal", "type": "Livre","saving":"Combatente", "cost": 0, "description": "Afeta o conjurador","scale":0 },
+    { "name": "Imbuir", "type": "Reforço","saving":"Criador", "cost": 0.01, "description": "Afeta um objeto ao toque","scale":0 },
+    { "name": "Rajada", "type": "Emissão","saving":"Sagaz", "cost": 0.02, "description": "3*X cm de diâmetro e X m de comprimento","scale":0 },
+    { "name": "Toque", "type": "Transmutação","saving":"Defesa", "cost": 0.1, "description": "Toque","scale":0 },
+    { "name": "Olhar", "type": "Manipulação","saving":"Magico", "cost": 0.4, "description": "X alvos","scale":0 },
+    { "name": "Área", "type": "Conjuração","saving":"Sagaz", "cost": 0.2, "description": "X m3","scale":0 },
+    { "name": "Dominio", "type": "Especialista","saving":"Especialista", "cost": 1, "description": "X m de diâmetro","scale":0 }
+  ]

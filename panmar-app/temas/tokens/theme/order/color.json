@@ -1,0 +1,14 @@
+{
+  "color": {
+      "main": {
+        "lightest" : { "value": "#b3ff30" },
+        "light" : { "value": "#7cca00" },
+        "medium": { "value": "#449700" },
+        "dark" : { "value": "#006700" },
+        "darkest"  : { "value": "#013900" }
+      },
+      "base": { "value": "#FFFFFF" },
+      "primary": { "value": "#000000" },
+      "secondary": { "value": "#d4af37" }
+}
+}

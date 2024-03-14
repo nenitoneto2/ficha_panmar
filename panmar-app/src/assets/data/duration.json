@@ -1,0 +1,10 @@
+[
+    { "name": "Instantânea", "type": "Livre", "cost": 0, "description": "É ativada no mesmo momento que conjurada","scale":0 },
+    { "name": "Rodada", "type": "Manipulação", "cost": 0.01, "description": "Fica ativa por X rodadas","scale":0 },
+    { "name": "Minuto", "type": "Manipulação", "cost": 0.1, "description": "Fica ativa por X minutos","scale":0 },
+    { "name": "Hora", "type": "Conjuração", "cost": 0.6, "description": "Fica ativa por X horas","scale":0 },
+    { "name": "Dia", "type": "Conjuração", "cost": 1.6, "description": "Fica ativa por X dias","scale":0 },
+    { "name": "Concentração", "type": "Manipulação", "cost": 0.8, "description": "Fica ativa até que a concentração do conjurador seja quebrada","scale":0 },
+    { "name": "Dissipar", "type": "Conjuração", "cost": 2.5, "description": "Fica ativa até que haja um ação de dissipar que passe o CD base do teste+rank+arcana","scale":0 },
+    { "name": "Versátil", "type": "Especialista", "cost": 3, "description": "Pode escolher qualquer duração e replicar","scale":0 }
+]
