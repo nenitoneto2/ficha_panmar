@@ -1,0 +1,6 @@
+<header class="container-linear" >
+<h1>Pan'mar</h1>
+<div *ngIf="activeHeaderConfig?.links" class="container-interno">
+<button-header *ngFor="let link of activeHeaderConfig.links" [routerLink]="link.path" text="{{link.name}}" [isDisabled]="false"></button-header>
+</div>
+</header>

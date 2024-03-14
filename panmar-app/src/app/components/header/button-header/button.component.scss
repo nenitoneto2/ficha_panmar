@@ -1,0 +1,41 @@
+@import '../../../../styles.scss';
+
+.btn {
+	background: $color-main-medium;
+	border-radius: $size-general-medium $size-general-medium 0 0;
+	color: $color-primary;
+	font-weight: 400;
+	width: auto;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+	height: $size-general-large;
+	font-size: $size-font-large;
+	border-top: solid $color-primary $size-general-smallest;
+	border-left: solid $color-primary $size-general-smallest;
+	border-right: solid $color-primary $size-general-smallest;
+	border-bottom: solid $color-primary 0;
+
+	&:hover {
+		border: solid $color-secondary $size-general-smallest;
+		box-shadow:
+		inset 0 -3em 3em $color-main-light,
+		0 0 0 2px $color-base;
+	}
+}
+
+.active {
+	background: $color-main-lightest;
+	border-radius: $size-general-medium $size-general-medium 0 0;
+	color: $color-primary;
+	font-weight: 400;
+	width: auto;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+	height: $size-general-large;
+	font-size: $size-font-large;
+	border: solid $color-secondary $size-general-smallest;
+	box-shadow:
+	inset 0 -3em 3em $color-main-light,
+	0 0 0 2px $color-base;
+
+}

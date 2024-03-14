@@ -1,0 +1,12 @@
+[
+    { "rank": "base", "rankNumber": 1, "cost": 5, " initialDice": "d4","acumulateDice":1 ,"size":1,"training":2,"baseCD":10,"modifier":1},
+    { "rank": "bronze", "rankNumber": 2, "cost": 10, " initialDice": "d6","acumulateDice":1 ,"size":2,"training":3,"baseCD":12,"modifier":2},
+    { "rank": "silver", "rankNumber": 3, "cost": 15, " initialDice": "d8","acumulateDice":1 ,"size":3,"training":5,"baseCD":14,"modifier":3},
+    { "rank": "gold", "rankNumber": 4, "cost": 20, " initialDice": "d4","acumulateDice":2,"size":4,"training":8,"baseCD":16,"modifier":4},
+    { "rank": "apex", "rankNumber": 5, "cost": 30, " initialDice": "d10","acumulateDice":1 ,"size":5,"training":13,"baseCD":18,"modifier":5},
+    { "rank": "minor-star", "rankNumber": 6, "cost": 40, " initialDice": "d12","acumulateDice":1 ,"size":6,"training":21,"baseCD":22,"modifier":7},
+    { "rank": "medium-star", "rankNumber": 7, "cost": 60, " initialDice": "d6","acumulateDice":2 ,"size":7,"training":34,"baseCD":26,"modifier":9},
+    { "rank": "great-star", "rankNumber": 8, "cost": 80, " initialDice": "d4","acumulateDice":3 ,"size":8,"training":55,"baseCD":30,"modifier":11},
+    { "rank": "supernova", "rankNumber": 9, "cost": 100, " initialDice": "d8","acumulateDice":2 ,"size":9,"training":89,"baseCD":35,"modifier":13},
+    { "rank": "illuminated", "rankNumber": 10, "cost": 150, " initialDice": "d6","acumulateDice":3 ,"size":10,"training":144,"baseCD":40,"modifier":15}
+]

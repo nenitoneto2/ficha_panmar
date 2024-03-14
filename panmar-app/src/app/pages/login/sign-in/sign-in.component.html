@@ -1,0 +1,23 @@
+<section class="section-center">
+    <main class="main-box">
+        <h2>Login</h2>
+
+        <form class="login-box">
+            <input type="text" placeholder="email" #userName required />
+            <input type="password" placeholder="senha" #userPassword required />
+            <a type="button" routerLink="/forgot-password">Esqueceu a senha?</a>
+            <input class="btn" type="button" value="Entrar" (click)="authService.SignIn(userName.value, userPassword.value)" />   
+        </form>
+        <p>ou</p>
+        <!-- <button class="btn-google" type="button" (click)="authService.GoogleAuth()">
+            Entrar com Google
+        </button> -->
+        <div>
+        <p>Novo aqui?</p>
+        <a  type="link"routerLink="/register-user"> Registre-se</a>
+        </div>
+
+        
+
+    </main>
+</section>

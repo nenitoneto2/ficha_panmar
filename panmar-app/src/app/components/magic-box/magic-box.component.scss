@@ -1,0 +1,10 @@
+@import '../../../../temas/build/scss/variables';
+
+.magic-box {
+    margin: $size-general-small;
+    padding: $size-general-medium;
+    font-size: $size-font-medium;
+    border: solid $color-secondary $size-general-smallest;
+    background-color: $color-main-dark ;
+    color: $color-base;
+}

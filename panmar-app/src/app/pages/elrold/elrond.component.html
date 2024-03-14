@@ -1,0 +1,20 @@
+<div class="caixota">
+<div class="cardo">
+  <p>Nome da Magia: dsadasdas</p>
+  <p>Efeito Principal: {{mainMagic.name}}</p>
+  <p>Efeito Secundario: {{secondaryEfect.value}}</p>
+  <!-- <button mat-raised-button (click)="mainSubmit()">Enable form control</button> -->
+</div>
+    <mat-tab-group preserveContent >
+      <mat-tab label="Principal"> 
+        <elrold-main (newMainEvent)="addMain($event)"></elrold-main>
+      </mat-tab>
+      <mat-tab label="Secundario">
+        <elrold-secondary></elrold-secondary>        
+      </mat-tab>
+      <mat-tab label="Alcance"> <elrold-range></elrold-range> </mat-tab>
+      <mat-tab label="Duração"> <elrold-duration></elrold-duration> </mat-tab>
+      <mat-tab label="Velocidade de ação"> <elrold-action-speed></elrold-action-speed> </mat-tab>
+    </mat-tab-group>
+  </div>
+

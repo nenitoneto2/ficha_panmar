@@ -2,11 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-flow: row wrap;
+    flex-flow:column;
+    text-align: center;
 }
-
-.element {
-    margin: 1rem 100% 1rem 1rem ;
-    width: 20rem;
-    padding: 0.4rem;
-} 

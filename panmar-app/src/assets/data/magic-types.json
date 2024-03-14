@@ -1,0 +1,9 @@
+[
+    { "name": "Livre", "costMain": 0, "costSecondary": 0, "costAuxiliar": 0 },
+    { "name": "Reforço", "costMain": 0.5, "costSecondary": 0.25, "costAuxiliar": 0.1 },
+    { "name": "Emissão", "costMain": 0.75, "costSecondary": 0.35, "costAuxiliar": 0.15 },
+    { "name": "Transmutação", "costMain": 1, "costSecondary": 0.5, "costAuxiliar": 0.2 },
+    { "name": "Manipulação", "costMain": 1.5, "costSecondary": 0.75, "costAuxiliar": 0.3 },
+    { "name": "Conjuração", "costMain": 2, "costSecondary": 1, "costAuxiliar": 0.4 },
+    { "name": "Especialista", "costMain": 3, "costSecondary": 1.5, "costAuxiliar": 0.6 }
+  ]

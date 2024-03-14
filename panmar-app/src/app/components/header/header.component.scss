@@ -1,0 +1,26 @@
+@import '../../../../temas/build/scss/variables';
+
+.container-linear {
+    display: flex;
+    justify-content:start;
+    align-items: flex-end;
+    flex-flow:flex-start;
+    height: auto;
+    width: 95%;
+    padding-right: 5%;
+    margin-bottom: 1rem;
+    box-shadow:
+    inset 0 -3em 3em $color-main-medium,
+    0 0 0 2px $color-base,
+
+}
+
+.container-interno {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-flow:flex-start;
+    height: auto;
+    width: auto;
+    margin-left: 1rem;
+}
