@@ -1,0 +1,38 @@
+@import '../../../styles.scss';
+
+.container-interno {
+    display: flex;
+    flex-flow:column;
+}
+.example-container {
+    position: absolute;
+    top:5rem;
+    bottom:0;
+    left: 0;
+    right: 0;
+  }
+  
+  .example-sidenav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: $size-general-small;
+    border-right: solid $color-secondary $size-general-smallest;
+    box-shadow: 0 -3em 3em $color-main-light;
+    margin-right: 1rem;
+  }
+  
+  .example-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .example-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }

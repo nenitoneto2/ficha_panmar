@@ -1,17 +1,10 @@
-import { Component, SimpleChanges , ElementRef, ViewChild, inject} from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {MatAutocompleteSelectedEvent, MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
-import {MatIconModule} from '@angular/material/icon';
-import {AsyncPipe} from '@angular/common';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {LiveAnnouncer} from '@angular/cdk/a11y';
+import { Component} from '@angular/core';
+import { FormControl} from '@angular/forms';
 import { newMagic } from 'src/app/shared/interfaces/magic/magic';
 import { MagicService } from 'src/app/shared/services/magic.service';
 import { MagicEffect } from 'src/app/shared/interfaces/magic/magic-effects';
+import { Magic } from 'src/app/shared/class/magic';
+import { MagicTypes } from 'src/app/shared/enums/magic-types';
 
 
 @Component({
@@ -21,7 +14,6 @@ import { MagicEffect } from 'src/app/shared/interfaces/magic/magic-effects';
 })
 export class ElrondComponent {
   isSubmitted = false;
-  public magicTypes:any = [];
   public magicRange:any = [];
   public magicDuration:any = [];
   public magicEfects:any = [];
@@ -32,22 +24,18 @@ export class ElrondComponent {
   anyMagic:newMagic ;
   mainMagic: MagicEffect = { 
     "name": "", 
-  "type": "", 
+  "type": MagicTypes.Livre, 
   "cost": 0, 
   "description": "" };
-
+  m=new Magic("a");
   constructor(private magicservice: MagicService,) { 
   }
 
   addMain(main: MagicEffect) {
     this.mainMagic = main[0];
+    this.m.callMagic();
   }
   ngOnInit() {
-    this.magicservice.getMagicTypes().subscribe(
-      data => {
-        this.magicTypes = data;
-      }
-    );
     this.magicservice.getMagicRange().subscribe(
       data => {
         this.magicRange = data;

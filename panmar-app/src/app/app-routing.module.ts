@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'home', path: 'home' },{ name: 'personagens', path: 'personagens' }, { name: 'wiki', path: 'wiki' }, { name: 'elrold', path: 'elrold' } ] } } },
   { path: 'personagens', component: PersonagensComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'home', path: 'home' },{ name: 'personagens', path: 'personagens' }, { name: 'wiki', path: 'wiki' }, { name: 'elrold', path: 'elrold' } ] } } },
   { path: 'wiki', component: WikiComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'home', path: 'home' },{ name: 'personagens', path: 'personagens' }, { name: 'wiki', path: 'wiki' }, { name: 'elrold', path: 'elrold' } ] } } },
-  { path: 'elrold', component: ElrondComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'elrold', path: 'elrold' }] } } },
+  { path: 'elrold', component: ElrondComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'home', path: 'home' },{ name: 'personagens', path: 'personagens' }, { name: 'wiki', path: 'wiki' }, { name: 'elrold', path: 'elrold' } ] } } },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
