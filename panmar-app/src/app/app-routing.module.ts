@@ -9,6 +9,7 @@ import { PersonagensComponent } from './pages/personagens/personagens.component'
 import { WikiComponent } from './pages/wiki/wiki.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { ElrondComponent } from './pages/elrold/elrond.component';
+import { PersonagemComponent } from './pages/personagem/personagem.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'verify-email-address', component: VerifyEmailComponent,canActivate: [AuthGuard], data: { header: { title: 'Login', links: [ { name: 'Login', path: 'sign-in' },{ name: 'Registre-se', path: 'register-user' },{ name: 'Esqueçi a senha', path: 'forgot-password' },{ name: 'Verifique sua senha', path: 'verify-email-address' } ] } }},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'home', path: 'home' },{ name: 'personagens', path: 'personagens' }, { name: 'wiki', path: 'wiki' }, { name: 'elrold', path: 'elrold' } ] } } },
   { path: 'personagens', component: PersonagensComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'home', path: 'home' },{ name: 'personagens', path: 'personagens' }, { name: 'wiki', path: 'wiki' }, { name: 'elrold', path: 'elrold' } ] } } },
+  { path: 'personagem', component: PersonagemComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'home', path: 'home' },{ name: 'personagens', path: 'personagens' }, { name: 'wiki', path: 'wiki' }, { name: 'elrold', path: 'elrold' } ] } } },
   { path: 'wiki', component: WikiComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'home', path: 'home' },{ name: 'personagens', path: 'personagens' }, { name: 'wiki', path: 'wiki' }, { name: 'elrold', path: 'elrold' } ] } } },
   { path: 'elrold', component: ElrondComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'home', path: 'home' },{ name: 'personagens', path: 'personagens' }, { name: 'wiki', path: 'wiki' }, { name: 'elrold', path: 'elrold' } ] } } },
 ];

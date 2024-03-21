@@ -1,0 +1,34 @@
+input {
+    margin-left: 10px;
+    max-width: 200px;
+}
+
+p,.row{
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+input.stat{
+    max-width: 60px;
+    align-content: end;
+}
+
+p.regular{
+    font-size: 20;
+}
+
+input.currency{
+    max-width: 80px;
+}
+
+select {
+    margin-left: 10px;
+}
+
+div.row {
+    display: flex;
+    max-width: 80%;
+    overflow: auto;
+    justify-content: space-between;
+    flex-direction: row;
+}

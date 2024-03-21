@@ -1,0 +1,340 @@
+<form [formGroup]="characterForm" (ngSubmit)="onSubmit()" >
+    <div class="row">
+        <p>Name: </p><input type="text" id="name" formControlName="name">          
+        <p>Rank: </p>
+        <select name="rank" id="rank" formControlName="rank" >
+            <option *ngFor="let rank of leveledRanks" [value]="rank">{{rank}}</option>
+        </select>
+        <p>Specie: </p> 
+        <select name="species" id="species" formControlName="species">
+            <option *ngFor="let specie of species" [value]="specie">{{specie}}</option>
+        </select>
+        <p>Symbol: </p>
+        <input type="text" id="symbol" formControlName="symbol"> 
+        <p>Elements: </p>
+        <select name="primaryElement" id="primaryElement" formControlName="primaryElement" >
+            <option *ngFor="let element of magicElements" [value]="element">{{element}}</option>
+        </select>
+        <select name="secondaryElement" id="secondaryElement" formControlName="secondaryElement" 
+        *ngIf="characterForm.get('species').value === hanaku">
+            <option *ngFor="let element of magicElements" [value]="element">{{element}}</option>
+        </select>
+    </div>
+
+    <div class="row">
+        
+        <p>PO: </p>
+        <input type="number" id="PO" formControlName="PO" class="currency"> 
+        <p>Crystals: </p>
+        <input type="number" id="crystals" formControlName="crystals" class="currency"> 
+        <p>Hair Color: </p>
+        <input type="text" id="hairColor" formControlName="hairColor"> 
+        <p>Height: </p>
+        <input type="text" id="height" formControlName="height"> 
+        <p>Eye Color: </p>
+        <input type="text" id="eyeColor" formControlName="eyeColor"> 
+        <p>Weight: </p>
+        <input type="number" id="weight" formControlName="weight" class="stat"> 
+    </div>
+
+    <div class="row">
+        <p>Life Rolled:</p>
+        <input type="number" id="lifeRolled" formControlName="lifeRolled" class="stat">
+        <p>Max HP <strong>{{GetMaxHP()}}</strong></p>
+        <p>Life Current:</p>
+        <input type="number" id="lifeCurrent" formControlName="lifeCurrent" class="stat">
+        <p>| Mana Rolled:</p>
+        <input type="number" id="manaRolled" formControlName="manaRolled" class="stat">
+        <p>Max Mana <strong>{{GetMaxMana()}}</strong></p>
+        <p>Mana Current:</p>
+        <input type="number" id="manaCurrent" formControlName="manaCurrent" class="stat">
+        <p>Death Marks:</p>
+        <input type="number" id="deathMark" formControlName="deathMark" class="stat">
+        
+    </div>
+
+    <div class="row">
+        <p>Land Movement:</p>
+        <input type="number" id="landMovement" formControlName="landMovement" class="stat">
+        <p>Movement <strong>{{GetLandMovement()}}</strong></p>
+        <p>Swim Movement:</p>
+        <input type="number" id="swimMovement" formControlName="swimMovement" class="stat">
+        <p>Movement <strong>{{GetSwimMovement()}}</strong></p>
+        <p>Fly Movement:</p>
+        <input type="number" id="flyMovement" formControlName="flyMovement" class="stat">
+        <p>Movement <strong>{{GetFlyMovement()}}</strong></p>
+        <p>Burrow Movement:</p>
+        <input type="number" id="burrowMovement" formControlName="burrowMovement" class="stat">
+        <p>Movement <strong>{{GetBurrowMovement()}}</strong></p>
+    </div>
+
+    <div>
+        <hr>
+        <h4>Combatant</h4>
+        <div class="row">
+            <p>Stat</p>
+            <input type="number" id="combatant" formControlName="combatant" class="stat"> 
+            <p>Bonus</p>
+            <input type="number" id="bonusCombatant" formControlName="bonusCombatant" class="stat"> 
+            <p> Total {{characterForm.get('combatant').value + characterForm.get('bonusCombatant').value }}</p>
+        </div>
+
+        <h4>Keen</h4>
+        <div class="row">
+            <p>Stat</p>
+            <input type="number" id="keen" formControlName="keen" class="stat"> 
+            <p>Bonus</p>
+            <input type="number" id="bonusKeen" formControlName="bonusKeen" class="stat"> 
+            <p> Total {{characterForm.get('keen').value + characterForm.get('bonusKeen').value }}</p>
+        </div>
+
+        <h4>Protector</h4>
+        <div class="row">
+            <p>Stat</p>
+            <input type="number" id="protector" formControlName="protector" class="stat"> 
+            <p>Bonus</p>
+            <input type="number" id="bonusProtector" formControlName="bonusProtector" class="stat"> 
+            <p> Total {{characterForm.get('protector').value + characterForm.get('bonusProtector').value }}</p>
+        </div>
+
+        <h4>Magic</h4>
+        <div class="row">
+            <p>Stat</p>
+            <input type="number" id="magic" formControlName="magic" class="stat"> 
+            <p>Bonus</p>
+            <input type="number" id="bonusMagic" formControlName="bonusMagic" class="stat"> 
+            <p> Total {{characterForm.get('magic').value + characterForm.get('bonusMagic').value }}</p>
+        </div>
+
+        <h4>Create</h4>
+        <div class="row">
+            <p>Stat</p>
+            <input type="number" id="create" formControlName="create" class="stat"> 
+            <p>Bonus</p>
+            <input type="number" id="bonusCreate" formControlName="bonusCreate" class="stat"> 
+            <p> Total {{characterForm.get('create').value + characterForm.get('bonusCreate').value }}</p>
+        </div>
+
+        <h4>Eloquence</h4>
+        <div class="row">
+            <p>Stat</p>
+            <input type="number" id="eloquence" formControlName="eloquence" class="stat"> 
+            <p>Bonus</p>
+            <input type="number" id="bonusEloquence" formControlName="bonusEloquence" class="stat"> 
+            <p> Total {{characterForm.get('eloquence').value + characterForm.get('bonusEloquence').value }}</p>
+        </div>
+
+        <hr>
+    </div>
+
+    <div>
+        <h4>Meridians</h4>
+
+        <div class="row">
+            <p>Terrain</p>
+            <select name="terrain" id="terrain" formControlName="terrain" >
+                <option *ngFor="let rank of ranks" [value]="rank">{{rank}}</option>
+            </select>
+        </div>
+        <div class="row">
+            <p>Sacred</p>
+            <select name="sacred" id="sacred" formControlName="sacred" >
+                <option *ngFor="let rank of ranks" [value]="rank">{{rank}}</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <p>Solar</p>
+            <select name="solar" id="solar" formControlName="solar" >
+                <option *ngFor="let rank of ranks" [value]="rank">{{rank}}</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <p>Heart</p>
+            <select name="heart" id="heart" formControlName="heart" >
+                <option *ngFor="let rank of ranks" [value]="rank">{{rank}}</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <p>Neck</p>
+            <select name="neck" id="neck" formControlName="neck" >
+                <option *ngFor="let rank of ranks" [value]="rank">{{rank}}</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <p>Third Eye</p>
+            <select name="thirdEye" id="thirdEye" formControlName="thirdEye" >
+                <option *ngFor="let rank of ranks" [value]="rank">{{rank}}</option>
+            </select>
+        </div>
+        
+        <div class="row">
+            <p>Crown</p>
+            <select name="crown" id="crown" formControlName="crown" >
+                <option *ngFor="let rank of ranks" [value]="rank">{{rank}}</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <p>Aligning</p>
+            <select name="aligning" id="aligning" formControlName="aligning" >
+                <option *ngFor="let rank of ranks" [value]="rank">{{rank}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div>
+        <h4>Skills</h4>
+
+        <div class="row">
+            <p>Martial -> Mod {{2 * characterForm.get('combatant').value}} </p>
+            <p>Knowledge </p>
+            <input type="number" id="martial" formControlName="martial" class="stat"> 
+            <p> Total {{2 * characterForm.get('combatant').value +  characterForm.get('martial').value}}</p>
+        </div>
+
+        <div class="row">
+            <p>Arcane -> Mod {{2 * characterForm.get('magic').value}} </p>
+            <p>Knowledge </p>
+            <input type="number" id="arcane" formControlName="arcane" class="stat"> 
+            <p> Total {{2 * characterForm.get('magic').value +  characterForm.get('arcane').value}}</p>
+        </div>
+
+        <div class="row">
+            <p>Sneak -> Mod {{2 * characterForm.get('keen').value}} </p>
+            <p>Knowledge </p>
+            <input type="number" id="sneak" formControlName="sneak" class="stat"> 
+            <p> Total {{2 * characterForm.get('keen').value +  characterForm.get('sneak').value}}</p>
+        </div>
+
+        <div class="row">
+            <p>Creation -> Mod {{2 * characterForm.get('create').value}} </p>
+            <p>Knowledge </p>
+            <input type="number" id="creation" formControlName="creation" class="stat"> 
+            <p> Total {{2 * characterForm.get('create').value +  characterForm.get('creation').value}}</p>
+        </div>
+
+        <div class="row">
+            <p>Concentration -> Mod {{2 * characterForm.get('protector').value}} </p>
+            <p>Knowledge </p>
+            <input type="number" id="concentration" formControlName="concentration" class="stat"> 
+            <p> Total {{2 * characterForm.get('protector').value +  characterForm.get('concentration').value}}</p>
+        </div>
+
+        <div class="row">
+            <p>Act -> Mod {{2 * characterForm.get('eloquence').value}} </p>
+            <p>Knowledge </p>
+            <input type="number" id="act" formControlName="act" class="stat"> 
+            <p> Total {{2 * characterForm.get('eloquence').value +  characterForm.get('act').value}}</p>
+        </div>
+
+        <div class="row">
+            <p>Meridians -> Mod {{characterForm.get('combatant').value + characterForm.get('magic').value}} </p>
+            <p>Knowledge </p>
+            <input type="number" id="meridians" formControlName="meridians" class="stat"> 
+            <p> Total {{characterForm.get('combatant').value + characterForm.get('magic').value +  characterForm.get('meridians').value}}</p>
+        </div>
+
+        <div class="row">
+            <p>Acrobatics -> Mod {{characterForm.get('combatant').value + characterForm.get('keen').value}} </p>
+            <p>Knowledge </p>
+            <input type="number" id="acrobatics" formControlName="acrobatics" class="stat"> 
+            <p> Total {{characterForm.get('combatant').value + characterForm.get('keen').value +  characterForm.get('acrobatics').value}}</p>
+        </div>
+
+        <div class="row">
+            <p>Training -> Mod {{characterForm.get('combatant').value + characterForm.get('create').value}} </p>
+            <p>Knowledge </p>
+            <input type="number" id="training" formControlName="training" class="stat"> 
+            <p> Total {{characterForm.get('combatant').value + characterForm.get('create').value +  characterForm.get('training').value}}</p>
+        </div>
+
+        <div class="row">
+            <p>Athletics -> Mod {{characterForm.get('combatant').value + characterForm.get('protector').value}} </p>
+            <p>Knowledge </p>
+            <input type="number" id="athletics" formControlName="athletics" class="stat"> 
+            <p> Total {{characterForm.get('combatant').value + characterForm.get('protector').value +  characterForm.get('athletics').value}}</p>
+        </div>
+
+        <div class="row">
+            <p>Presence -> Mod {{characterForm.get('combatant').value + characterForm.get('eloquence').value}} </p>
+            <p>Knowledge </p>
+            <input type="number" id="presence" formControlName="presence" class="stat"> 
+            <p> Total {{characterForm.get('combatant').value + characterForm.get('eloquence').value +  characterForm.get('presence').value}}</p>
+        </div>
+
+        <div class="row">
+            <p>Perception -> Mod {{characterForm.get('magic').value + characterForm.get('keen').value}} </p>
+            <p>Knowledge </p>
+            <input type="number" id="perception" formControlName="perception" class="stat"> 
+            <p> Total {{characterForm.get('magic').value + characterForm.get('keen').value +  characterForm.get('perception').value}}</p>
+        </div>
+
+        <div class="row">
+            <p>World -> Mod {{characterForm.get('magic').value + characterForm.get('create').value}} </p>
+            <p>Knowledge </p>
+            <input type="number" id="world" formControlName="world" class="stat"> 
+            <p> Total {{characterForm.get('magic').value + characterForm.get('create').value +  characterForm.get('world').value}}</p>
+        </div>
+
+        <div class="row">
+            <p>Medicine -> Mod {{characterForm.get('magic').value + characterForm.get('protector').value}} </p>
+            <p>Knowledge </p>
+            <input type="number" id="medicine" formControlName="medicine" class="stat"> 
+            <p> Total {{characterForm.get('magic').value + characterForm.get('protector').value +  characterForm.get('medicine').value}}</p>
+        </div>
+
+        <div class="row">
+            <p>Smooth Talk -> Mod {{characterForm.get('magic').value + characterForm.get('eloquence').value}} </p>
+            <p>Knowledge </p>
+            <input type="number" id="smoothTalk" formControlName="smoothTalk" class="stat"> 
+            <p> Total {{characterForm.get('magic').value + characterForm.get('eloquence').value +  characterForm.get('medicine').value}}</p>
+        </div>
+
+        <div class="row">
+            <p>Sleight Of Hand -> Mod {{characterForm.get('keen').value + characterForm.get('create').value}} </p>
+            <p>Knowledge </p>
+            <input type="number" id="sleightOfHand" formControlName="sleightOfHand" class="stat"> 
+            <p> Total {{characterForm.get('keen').value + characterForm.get('create').value +  characterForm.get('sleightOfHand').value}}</p>
+        </div>
+
+        <div class="row">
+            <p>Survival -> Mod {{characterForm.get('keen').value + characterForm.get('protector').value}} </p>
+            <p>Knowledge </p>
+            <input type="number" id="survival" formControlName="survival" class="stat"> 
+            <p> Total {{characterForm.get('keen').value + characterForm.get('protector').value +  characterForm.get('survival').value}}</p>
+        </div>
+
+        <div class="row">
+            <p>Investigate -> Mod {{characterForm.get('keen').value + characterForm.get('eloquence').value}} </p>
+            <p>Knowledge </p>
+            <input type="number" id="investigate" formControlName="investigate" class="stat"> 
+            <p> Total {{characterForm.get('keen').value + characterForm.get('eloquence').value +  characterForm.get('investigate').value}}</p>
+        </div>
+
+        <div class="row">
+            <p>Monsters -> Mod {{characterForm.get('create').value + characterForm.get('protector').value}} </p>
+            <p>Knowledge </p>
+            <input type="number" id="monsters" formControlName="monsters" class="stat"> 
+            <p> Total {{characterForm.get('create').value + characterForm.get('protector').value +  characterForm.get('monsters').value}}</p>
+        </div>
+
+        <div class="row">
+            <p>Cultural -> Mod {{characterForm.get('create').value + characterForm.get('eloquence').value}} </p>
+            <p>Knowledge </p>
+            <input type="number" id="cultural" formControlName="cultural" class="stat"> 
+            <p> Total {{characterForm.get('create').value + characterForm.get('eloquence').value +  characterForm.get('cultural').value}}</p>
+        </div>
+
+        <div class="row">
+            <p>Will -> Mod {{characterForm.get('protector').value + characterForm.get('eloquence').value}} </p>
+            <p>Knowledge </p>
+            <input type="number" id="will" formControlName="will" class="stat"> 
+            <p> Total {{characterForm.get('protector').value + characterForm.get('eloquence').value +  characterForm.get('will').value}}</p>
+        </div>
+    </div>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+</form>
