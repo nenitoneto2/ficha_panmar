@@ -43,6 +43,7 @@ import { ElroldSecondaryComponent } from './pages/elrold/magic/elrold-secondary/
 import { ElroldRangeComponent } from './pages/elrold/magic/elrold-range/elrold-range.component';
 import { ElroldDurationComponent } from './pages/elrold/magic/elrold-duration/elrold-duration.component';
 import { ElroldActionSpeedComponent } from './pages/elrold/magic/elrold-action-speed/elrold-action-speed.component';
+import { PersonagemComponent } from './pages/personagem/personagem.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { ElroldActionSpeedComponent } from './pages/elrold/magic/elrold-action-s
     ElroldSecondaryComponent,
     ElroldRangeComponent,
     ElroldDurationComponent,
-    ElroldActionSpeedComponent
+    ElroldActionSpeedComponent,
+    PersonagemComponent
   ],
   imports: [
     BrowserModule,
