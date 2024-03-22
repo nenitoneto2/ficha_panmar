@@ -26,6 +26,7 @@ export enum LeveledRank{
 }
 
 export enum Rank{
+    None,
     Base,
     Bronze,
     Silver,
