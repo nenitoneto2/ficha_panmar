@@ -44,6 +44,8 @@ import { ElroldRangeComponent } from './pages/elrold/magic/elrold-range/elrold-r
 import { ElroldDurationComponent } from './pages/elrold/magic/elrold-duration/elrold-duration.component';
 import { ElroldActionSpeedComponent } from './pages/elrold/magic/elrold-action-speed/elrold-action-speed.component';
 import { PersonagemComponent } from './pages/personagem/personagem.component';
+import { CharacterService } from './shared/services/character.service';
+import { CharacterDataStorageService } from './shared/services/character.data-storage';
 
 @NgModule({
   declarations: [
@@ -98,7 +100,7 @@ import { PersonagemComponent } from './pages/personagem/personagem.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [CharacterService, CharacterDataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

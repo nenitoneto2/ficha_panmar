@@ -3,7 +3,7 @@ import { Skill } from "./skill";
 
 export class WorldSkill extends Skill{
     constructor(knowledge: number = 0){
-        super('World', knowledge)
+        super('Mundo', knowledge)
     }
 
     override GetSkillValue(stats: Stats): number {

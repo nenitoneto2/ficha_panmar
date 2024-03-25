@@ -1,3 +1,5 @@
+import { Stats } from "../stats/stats"
+
 export class Skill{
     name: string
     knowledge: number
@@ -7,7 +9,7 @@ export class Skill{
         this.knowledge = knowledge
     }   
 
-    GetSkillValue(){
+    GetSkillValue(stats: Stats){
         return -1
     }
 }
