@@ -3,6 +3,8 @@ import { LeveledRank } from "../../enums/rank"
 import { Species } from "../../enums/specie"
 import { DeathSaves } from "./death-saves"
 import { Meridians } from "./meridians/meridians"
+import { Skills } from "./skills/skills"
+import { Stats } from "./stats/stats"
 import { Health } from "./vitals/health"
 import { Mana } from "./vitals/mana"
 
@@ -19,4 +21,6 @@ export class Character{
     deathSaves: DeathSaves
     success: number
     meridians: Meridians
+    stats: Stats
+    skills: Skills
 }
