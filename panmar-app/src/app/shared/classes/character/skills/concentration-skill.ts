@@ -1,7 +1,7 @@
 import { Skill } from "./skill";
 import { Stats } from "../stats/stats";
 
-export class ArcaneSkill extends Skill{
+export class ConcentrationSkill extends Skill{
     constructor(knowledge: number = 0){
         super('Concentração', knowledge)
     }

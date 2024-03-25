@@ -2,8 +2,8 @@ import { Rank } from "src/app/shared/enums/rank";
 import { Meridian } from "./meridian";
 
 export class AlignMeridian extends Meridian{
-    constructor(){
-        super('Alinhamento', Rank.Base)
+    constructor(rank: Rank){
+        super('Alinhamento', rank)
     }
 
     override GetMeridianEffectDescrition(): string {
