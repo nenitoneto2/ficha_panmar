@@ -1,4 +1,5 @@
 export enum Elements{
+    None,
     Cloud,
     Poison,
     Solar,

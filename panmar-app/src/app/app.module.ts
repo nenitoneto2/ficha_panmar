@@ -48,6 +48,7 @@ import { NavHelperComponent } from './components/nav-helper/nav-helper.component
 import { PersonagemComponent } from './pages/personagem/personagem.component';
 import { CharacterService } from './shared/services/character.service';
 import { CharacterDataStorageService } from './shared/services/character.data-storage';
+import { PersonagemItemComponent } from './pages/personagens/personagem-item/personagem-item.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,9 @@ import { CharacterDataStorageService } from './shared/services/character.data-st
     ElroldDurationComponent,
     ElroldActionSpeedComponent,
     NavHelperComponent,
-    PersonagemComponent
+    PersonagemComponent,
+    PersonagemItemComponent
+
   ],
   imports: [
     BrowserModule,
