@@ -12,7 +12,8 @@ export class Character{
     name : string
     rank : LeveledRank
     species : Species
-    elements : Elements[] //TODO: Change elements to a class
+    primaryElement : Elements //TODO: Change elements to a class
+    secondaryElement : Elements
     PO: number
     Crystals: number
     characterDescription: string 

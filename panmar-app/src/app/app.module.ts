@@ -46,6 +46,7 @@ import { ElroldActionSpeedComponent } from './pages/elrold/magic/elrold-action-s
 import { PersonagemComponent } from './pages/personagem/personagem.component';
 import { CharacterService } from './shared/services/character.service';
 import { CharacterDataStorageService } from './shared/services/character.data-storage';
+import { PersonagemItemComponent } from './pages/personagens/personagem-item/personagem-item.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { CharacterDataStorageService } from './shared/services/character.data-st
     ElroldRangeComponent,
     ElroldDurationComponent,
     ElroldActionSpeedComponent,
-    PersonagemComponent
+    PersonagemComponent,
+    PersonagemItemComponent
   ],
   imports: [
     BrowserModule,

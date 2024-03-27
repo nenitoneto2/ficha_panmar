@@ -13,6 +13,10 @@ input.stat{
     align-content: end;
 }
 
+option{
+    min-width: 300px;
+}
+
 p.regular{
     font-size: 20;
 }
@@ -29,6 +33,6 @@ div.row {
     display: flex;
     max-width: 80%;
     overflow: auto;
-    justify-content: space-between;
+    justify-content:left;
     flex-direction: row;
 }

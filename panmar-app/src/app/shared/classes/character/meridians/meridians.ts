@@ -10,7 +10,7 @@ import { CrownMeridian } from "./crown-meridian";
 import { AlignMeridian } from "./aligning-meridian";
 
 export class Meridians{
-    meridians: Meridian[]
+    meridians: Meridian[] = []
 
     constructor(terrain = Rank.None, sacred = Rank.None, solar = Rank.None, heart = Rank.None, neck = Rank.None, thirdEye = Rank.None, crown = Rank.None, align = Rank.None){
         this.meridians.push(

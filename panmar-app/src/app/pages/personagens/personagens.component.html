@@ -1,1 +1,5 @@
-<p>personagens works!</p>
+<div>
+    <app-personagem-item
+    *ngFor="let character of characters; let i = index"
+    [index]="i"></app-personagem-item>
+</div>
