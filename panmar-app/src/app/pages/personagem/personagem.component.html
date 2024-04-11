@@ -1,24 +1,24 @@
 <div>
     <form [formGroup]="characterForm" (ngSubmit)="onSubmit()" >
+        <app-personagem-basis #characterBasis></app-personagem-basis>
+
         <div class="row">
-            <label for="name">Nome</label>
+            <label for="PO">PO</label>
             <input type="text"
-            id="name"
-            formControlName="name">
+            id="PO"
+            formControlName="PO">
+
+            <label for="Crystal">Crystal</label>
+            <input type="text"
+            id="Crystal"
+            formControlName="Crystal">
+        </div>
+        
+        <div>
+            <label for="characterDescription">Description</label>
+            <textarea formControlName="characterDescription"></textarea>
         </div>
 
-        <div class="row">
-            <label for="rank">Rank</label>
-            <select name="rank" id="rank" formArrayName="rank">
-                <option *ngFor="let rank of leveledRanks" [value]="rank">{{rank}}</option>
-            </select>
-        </div>
-
-        <div class="row">
-            <label for="rank">Especie</label>
-            <select name="species" id="species" formArrayName="species">
-                <option *ngFor="let specie of species" [value]="specie">{{specie}}</option>
-            </select>
-        </div>
+        <button type="submit">Save</button>
     </form>
 </div>
