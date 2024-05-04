@@ -1,8 +1,24 @@
 <div class="caixota">
 <div class="cardo">
-  <p>Nome da Magia: dsadasdas</p>
-  <p>Efeito Principal: {{mainMagic.name}}</p>
-  <p>Efeito Secundario: {{secondaryEfect.value}}</p>
+  <!-- <elrold-magic></elrold-magic> -->
+  <span>Nome da Magia: dsadasdas</span>
+  <br>
+  <span>Efeito Principal: {{customMagic.main}}</span>
+  <br>
+  <span>Efeito Secundario: <span *ngFor="let secondary of customMagic.secondary">{{secondary}}</span></span>
+  <br>
+  <span>Alcance: <span *ngFor="let range of customMagic.range;">{{range}} </span></span>
+  <span><span *ngFor="let scale of customMagic.rangeScale">{{scale}}</span></span>
+  <br>
+  <span>Duração: <span *ngFor="let duration of customMagic.duration">{{duration}}</span></span>
+  <span><span *ngFor="let scale of customMagic.durationScale">{{scale}}</span></span>
+  <br>
+  <span>Velocidade de ação:<span *ngFor="let actionSpeed of customMagic.actionSpeed">{{actionSpeed}}</span></span>
+  <span><span *ngFor="let scale of customMagic.actionSpeedScale">{{scale}}</span></span>
+  <br>
+  <span>{{aMagic.costEffectMagic()}}</span>
+  <br>
+  <span>{{aMagic.costFullMagic()}}</span>
   <!-- <button mat-raised-button (click)="mainSubmit()">Enable form control</button> -->
 </div>
     <mat-tab-group preserveContent >
@@ -10,11 +26,11 @@
         <elrold-main (newMainEvent)="addMain($event)"></elrold-main>
       </mat-tab>
       <mat-tab label="Secundario">
-        <elrold-secondary></elrold-secondary>        
+        <elrold-secondary (newSecondaryEvent)="addSecondary($event)"></elrold-secondary>        
       </mat-tab>
-      <mat-tab label="Alcance"> <elrold-range></elrold-range> </mat-tab>
-      <mat-tab label="Duração"> <elrold-duration></elrold-duration> </mat-tab>
-      <mat-tab label="Velocidade de ação"> <elrold-action-speed></elrold-action-speed> </mat-tab>
+      <mat-tab label="Alcance"> <elrold-range (newRangeEvent)="addRange($event)"></elrold-range> </mat-tab>
+      <mat-tab label="Duração"> <elrold-duration (newDurationEvent)="addDuration($event)"></elrold-duration> </mat-tab>
+      <mat-tab label="Velocidade de ação"> <elrold-action-speed (newActionSpeedEvent)="addActionSpeed($event)"></elrold-action-speed> </mat-tab>
     </mat-tab-group>
   </div>
 

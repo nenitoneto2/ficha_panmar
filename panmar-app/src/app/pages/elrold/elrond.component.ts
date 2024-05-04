@@ -5,6 +5,7 @@ import { MagicService } from 'src/app/shared/services/magic.service';
 import { MagicEffect } from 'src/app/shared/interfaces/magic/magic-effects';
 import { Magic } from 'src/app/shared/class/magic';
 import { MagicTypes } from 'src/app/shared/enums/magic-types';
+import { FormMagic } from 'src/app/shared/interfaces/magic/form-magic';
 
 
 @Component({
@@ -14,53 +15,45 @@ import { MagicTypes } from 'src/app/shared/enums/magic-types';
 })
 export class ElrondComponent {
   isSubmitted = false;
-  public magicRange:any = [];
-  public magicDuration:any = [];
-  public magicEfects:any = [];
-  public magicActionSpeed:any = [];
-  public magicRank:any = [];
-  mainEfect = new FormControl(['main']);
+  mainEfect = new FormControl('main');
   secondaryEfect = new FormControl(['main']);
   anyMagic:newMagic ;
-  mainMagic: MagicEffect = { 
-    "name": "", 
-  "type": MagicTypes.Livre, 
-  "cost": 0, 
-  "description": "" };
-  m=new Magic("a");
+  customMagic:FormMagic = {
+    main:"Teste de Pericia",
+    secondary:["Teste de Pericia","Teste de Pericia","Teste de Pericia","Previsão","Previsão"],
+    range:["Dominio","Toque"],
+    rangeScale:[1,2],
+    duration:["Minuto","Rodada"],
+    durationScale:[3,10],
+    actionSpeed: ["Ação parcial","Ação Completa"],
+    actionSpeedScale:[3,10]
+  };
+  aMagic= new Magic(this.customMagic);
   constructor(private magicservice: MagicService,) { 
   }
 
-  addMain(main: MagicEffect) {
-    this.mainMagic = main[0];
-    this.m.callMagic();
+  addMain(entry: string) {
+    this.customMagic.main = entry;
   }
+  addSecondary(entry: string[]) {
+    this.customMagic.secondary = entry;
+  }
+  addRange(entry: any) {
+    this.customMagic.range=entry.map((x)=>x.range)
+    this.customMagic.rangeScale=entry.map((x)=>x.rangeScale)
+  }
+
+  addDuration(entry: any) {
+    this.customMagic.duration=entry.map((x)=>x.duration)
+    this.customMagic.durationScale=entry.map((x)=>x.durationScale)
+  }
+
+  addActionSpeed(entry: any) {
+    this.customMagic.actionSpeed=entry.map((x)=>x.actionSpeed)
+    this.customMagic.actionSpeedScale=entry.map((x)=>x.actionSpeedScale)
+  }
+
   ngOnInit() {
-    this.magicservice.getMagicRange().subscribe(
-      data => {
-        this.magicRange = data;
-      }
-    );
-    this.magicservice.getMagicDuration().subscribe(
-      data => {
-        this.magicDuration = data;
-      }
-    );
-    this.magicservice.getMagicEffects().subscribe(
-      data => {
-        this.magicEfects = data;
-      }
-    );
-    this.magicservice.getMagicActionSpeed().subscribe(
-      data => {
-        this.magicActionSpeed = data;
-      }
-    );
-    this.magicservice.getMagicRank().subscribe(
-      data => {
-        this.magicRank = data;
-      }
-    );
   }
   
 }

@@ -1,7 +1,7 @@
 <mat-sidenav-container class="example-container" [hasBackdrop]="false">
     <mat-sidenav  mode="side" opened class="example-sidenav">
         <div class="container-interno">
-            <button *ngFor="let link of activeHeaderConfig.links" [routerLink]="link.path" mat-button>{{link.name}}</button>
+            <button *ngFor="let link of activeHeaderConfig.links" [routerLink]="link.path" routerLinkActive="active" mat-button>{{link.name}}</button>
             </div>
         </mat-sidenav>
     <mat-sidenav-content><ng-content></ng-content></mat-sidenav-content>

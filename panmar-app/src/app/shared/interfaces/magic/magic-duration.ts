@@ -1,6 +1,6 @@
 import { MagicTypes } from "../../enums/magic-types";
 
-export interface MagicActionSpeed {
+export interface MagicDuration {
     name:string,
     type:MagicTypes,
     cost:number,

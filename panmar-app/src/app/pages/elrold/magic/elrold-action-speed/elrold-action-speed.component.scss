@@ -1,0 +1,26 @@
+@import '../../../../../../temas/build/scss/variables';
+
+.example-chip-list {
+    width: 100%;
+  }
+  .caixota {
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    margin: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: solid $color-secondary $size-general-smallest;
+    background-color: $color-main-lightest;
+    input{
+      border-radius: 0.5rem;
+      border: solid $color-secondary $size-general-smallest;
+      background-color: $color-main-lightest;
+      text-align:right;
+    }
+}
+
+.number {
+    margin-left: 1rem;
+    width: min-content;
+}
