@@ -25,6 +25,7 @@ import { MagicBoxComponent } from './components/magic-box/magic-box.component';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -96,6 +97,7 @@ import { NavHelperComponent } from './components/nav-helper/nav-helper.component
     MatBadgeModule,
     MatSliderModule,
     FormsModule,
+    MatListModule,
     ReactiveFormsModule
   ],
   providers: [],

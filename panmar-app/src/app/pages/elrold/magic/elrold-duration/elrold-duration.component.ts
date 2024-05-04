@@ -1,11 +1,9 @@
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {Component, ElementRef, ViewChild, inject} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {Component, ElementRef, EventEmitter, Output, ViewChild, inject} from '@angular/core';
+import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
+import { Duration } from 'src/app/shared/class/duration';
 
 @Component({
   selector: 'elrold-duration',
@@ -14,49 +12,53 @@ import {LiveAnnouncer} from '@angular/cdk/a11y';
 })
 export class ElroldDurationComponent {
   separatorKeysCodes: number[] = [ENTER, COMMA];
-    fruitCtrl = new FormControl('');
-    filteredFruits: Observable<string[]>;
-    fruits: string[] = ['Lemon'];
-    allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
-  
-    @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
-  
-    announcer = inject(LiveAnnouncer);
-  
-    constructor() {
-      this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
-        startWith(null),
-        map((fruit: string | null) => (fruit ? this._filter(fruit) : this.allFruits.slice())),
-      );
+  cDurations : Duration = new Duration;
+  duration: string[] = [];
+  durationScale: number[] = [1];
+  allDuration: string[] = this.cDurations.names();
+  DurationForm: FormGroup;
+
+  @ViewChild('durationInput') durationInput: ElementRef<HTMLInputElement>;
+  @Output() newDurationEvent = new EventEmitter<any>();
+  announcer = inject(LiveAnnouncer);
+
+  constructor(private _formBuilder: FormBuilder) {
+    
+    this.DurationForm = this._formBuilder.group({
+      durations: this._formBuilder.array([]) ,
+    })
+  }
+
+  remove(duration: string): void {
+    const index = this.duration.indexOf(duration);
+
+    if (index >= 0) {
+      this.duration.splice(index, 1);
+      this.durations().removeAt(index);
+      this.newDurationEvent.emit(this.durations().value);
+      this.announcer.announce(`Removed ${duration}`);
     }
-  
-    add(event: MatChipInputEvent): void {
-      const value = (event.value || '').trim();
-      if (value) {
-        this.fruits.push(value);
-      }
-      event.chipInput!.clear();
-      this.fruitCtrl.setValue(null);
-    }
-  
-    remove(fruit: string): void {
-      const index = this.fruits.indexOf(fruit);
-  
-      if (index >= 0) {
-        this.fruits.splice(index, 1);
-        this.announcer.announce(`Removed ${fruit}`);
-      }
-    }
-  
-    selected(event: MatAutocompleteSelectedEvent): void {
-      this.fruits.push(event.option.viewValue);
-      this.fruitInput.nativeElement.value = '';
-      this.fruitCtrl.setValue(null);
-    }
-  
-    private _filter(value: string): string[] {
-      const filterValue = value.toLowerCase();
-  
-      return this.allFruits.filter(fruit => fruit.toLowerCase().includes(filterValue));
-    }
+  }
+
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.duration.push(event.option.viewValue);
+    this.durations().push(this.newDuration(event.option.viewValue));
+    this.durationInput.nativeElement.value = '';
+    this.newDurationEvent.emit(this.durations().value); 
+  }
+  eventemit() {
+    this.newDurationEvent.emit(this.durations().value); 
+  }
+  durations(): FormArray {
+    return this.DurationForm.get("durations") as FormArray
+  }
+  newDuration(name:string): FormGroup {
+    return this._formBuilder.group({
+      duration: name,
+      durationScale: 1,
+    })
+  }
+  removeEmployee(empIndex:number) {
+    this.durations().removeAt(empIndex);
+  }
 }

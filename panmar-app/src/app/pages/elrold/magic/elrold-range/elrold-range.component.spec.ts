@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ElroldRangeComponent } from './elrold-range.component';
+import { ElroldRangeComponent } from './ElroldRangeComponent';
 
 describe('ElroldRangeComponent', () => {
   let component: ElroldRangeComponent;

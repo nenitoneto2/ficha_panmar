@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./elrold-magic.component.scss']
 })
 export class ElroldMagicComponent {
-
+    typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
 }
