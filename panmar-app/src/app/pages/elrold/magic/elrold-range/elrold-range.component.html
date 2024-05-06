@@ -1,29 +1,24 @@
 <h3>Alcance</h3>
-<form>
-    <mat-form-field class="example-chip-list">
-        <div *ngFor="let fruit of fruits">
-            {{fruit}}   {{slider.value}}
-            <mat-slider  min="0" max="100" step="1" showTickMarks discrete >       
-            <input matSliderThumb #slider>
-          </mat-slider></div>
-        
-          
-      <mat-label>Favorite Fruits</mat-label>
-      <mat-chip-grid #chipGrid aria-label="Fruit selection">
-        
-          <mat-chip-row *ngFor="let fruit of fruits" (removed)="remove(fruit)">
-            {{fruit}}
-            <button matChipRemove [attr.aria-label]="'remove ' + fruit">
+<form [formGroup]="RangeForm">
+    <mat-form-field class="example-chip-list" formArrayName="ranges">
+      <mat-label>Alcance</mat-label>
+      <mat-chip-grid #chipGrid aria-label="Alcance selection">
+          <mat-chip-row *ngFor="let range of range; let empIndex=index" (removed)="remove(range)" class="caixota" >
+            <div [formGroupName]="empIndex">
+            {{range}}
+            <input matInput type="number" class="number" min="1" formControlName="rangeScale"  (click)="eventemit()">
+            <button matChipRemove [attr.aria-label]="'remove ' + range">
               <mat-icon>cancel</mat-icon>
             </button>
+          </div>
           </mat-chip-row>
       </mat-chip-grid>
-      <input placeholder="New Fruit..." #fruitInput [formControl]="fruitCtrl"
+      <input placeholder="Novo Alcance..." #rangeInput 
         [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-        (matChipInputTokenEnd)="add($event)"/>
+        />
+      </mat-form-field>
       <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-          <mat-option  *ngFor="let fruit of filteredFruits | async" [value]="fruit">{{fruit}}</mat-option>
+          <mat-option  *ngFor="let range of allRange" [value]="range">{{range}}</mat-option>
       </mat-autocomplete>
-    </mat-form-field>
   </form>

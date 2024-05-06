@@ -1,17 +1,11 @@
-import { Component, SimpleChanges , ElementRef, ViewChild, inject} from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {MatAutocompleteSelectedEvent, MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
-import {MatIconModule} from '@angular/material/icon';
-import {AsyncPipe} from '@angular/common';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {LiveAnnouncer} from '@angular/cdk/a11y';
+import { Component} from '@angular/core';
+import { FormControl} from '@angular/forms';
 import { newMagic } from 'src/app/shared/interfaces/magic/magic';
 import { MagicService } from 'src/app/shared/services/magic.service';
 import { MagicEffect } from 'src/app/shared/interfaces/magic/magic-effects';
+import { Magic } from 'src/app/shared/class/magic';
+import { MagicTypes } from 'src/app/shared/enums/magic-types';
+import { FormMagic } from 'src/app/shared/interfaces/magic/form-magic';
 
 
 @Component({
@@ -21,58 +15,45 @@ import { MagicEffect } from 'src/app/shared/interfaces/magic/magic-effects';
 })
 export class ElrondComponent {
   isSubmitted = false;
-  public magicTypes:any = [];
-  public magicRange:any = [];
-  public magicDuration:any = [];
-  public magicEfects:any = [];
-  public magicActionSpeed:any = [];
-  public magicRank:any = [];
-  mainEfect = new FormControl(['main']);
+  mainEfect = new FormControl('main');
   secondaryEfect = new FormControl(['main']);
   anyMagic:newMagic ;
-  mainMagic: MagicEffect = { 
-    "name": "", 
-  "type": "", 
-  "cost": 0, 
-  "description": "" };
-
+  customMagic:FormMagic = {
+    main:"Teste de Pericia",
+    secondary:["Teste de Pericia","Teste de Pericia","Teste de Pericia","Previsão","Previsão"],
+    range:["Dominio","Toque"],
+    rangeScale:[1,2],
+    duration:["Minuto","Rodada"],
+    durationScale:[3,10],
+    actionSpeed: ["Ação parcial","Ação Completa"],
+    actionSpeedScale:[3,10]
+  };
+  aMagic= new Magic(this.customMagic);
   constructor(private magicservice: MagicService,) { 
   }
 
-  addMain(main: MagicEffect) {
-    this.mainMagic = main[0];
+  addMain(entry: string) {
+    this.customMagic.main = entry;
   }
+  addSecondary(entry: string[]) {
+    this.customMagic.secondary = entry;
+  }
+  addRange(entry: any) {
+    this.customMagic.range=entry.map((x)=>x.range)
+    this.customMagic.rangeScale=entry.map((x)=>x.rangeScale)
+  }
+
+  addDuration(entry: any) {
+    this.customMagic.duration=entry.map((x)=>x.duration)
+    this.customMagic.durationScale=entry.map((x)=>x.durationScale)
+  }
+
+  addActionSpeed(entry: any) {
+    this.customMagic.actionSpeed=entry.map((x)=>x.actionSpeed)
+    this.customMagic.actionSpeedScale=entry.map((x)=>x.actionSpeedScale)
+  }
+
   ngOnInit() {
-    this.magicservice.getMagicTypes().subscribe(
-      data => {
-        this.magicTypes = data;
-      }
-    );
-    this.magicservice.getMagicRange().subscribe(
-      data => {
-        this.magicRange = data;
-      }
-    );
-    this.magicservice.getMagicDuration().subscribe(
-      data => {
-        this.magicDuration = data;
-      }
-    );
-    this.magicservice.getMagicEffects().subscribe(
-      data => {
-        this.magicEfects = data;
-      }
-    );
-    this.magicservice.getMagicActionSpeed().subscribe(
-      data => {
-        this.magicActionSpeed = data;
-      }
-    );
-    this.magicservice.getMagicRank().subscribe(
-      data => {
-        this.magicRank = data;
-      }
-    );
   }
   
 }

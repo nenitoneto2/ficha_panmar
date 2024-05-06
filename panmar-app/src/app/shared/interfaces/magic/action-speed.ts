@@ -1,6 +1,8 @@
-export interface ActionSpeed {
+import { MagicTypes } from "../../enums/magic-types";
+
+export interface MagicActionSpeed {
     name:string,
-    type:string,
+    type:MagicTypes,
     cost:number,
     description:string,
     scale:number

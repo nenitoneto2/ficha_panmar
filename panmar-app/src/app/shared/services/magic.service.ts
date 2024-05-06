@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MagicType } from '../interfaces/magic/magic-type';
 import { HttpClient} from '@angular/common/http';
-import { MagicEffect,newMagic,MagicRange,MagicRank,ActionSpeed,Duration } from '../interfaces/magic/magic-interfaces'
+import { MagicEffect,newMagic,MagicRange,MagicRank,MagicActionSpeed,MagicDuration } from '../interfaces/magic/magic-interfaces'
 
 
 @Injectable({
@@ -20,22 +20,12 @@ export class MagicService {
     return this.httpService.get<MagicRange[]>("../../../assets/data/range.json");
   }
   getMagicDuration() {
-    return this.httpService.get<Duration[]>("../../../assets/data/duration.json");
+    return this.httpService.get<MagicDuration[]>("../../../assets/data/duration.json");
   }
   getMagicActionSpeed() {
-    return this.httpService.get<ActionSpeed[]>("../../../assets/data/action-speed.json");
+    return this.httpService.get<MagicActionSpeed[]>("../../../assets/data/action-speed.json");
   }
   getMagicRank() {
     return this.httpService.get<MagicRank[]>("../../../assets/data/magic-rank.json");
-  }
-  setMagic(main:MagicEffect,ranges:MagicRange[],duration:Duration,actionSpeed: ActionSpeed,secondary?:MagicEffect[]): newMagic {
-    let mag:newMagic = {
-      main:main,
-      secondary:secondary,
-      range:ranges,
-      duration:duration,
-      actionSpeed: actionSpeed
-  };
-    return mag;
   }
 }

@@ -1,4 +1,4 @@
 <h3>Efeitos Principais </h3>
 <mat-chip-listbox aria-label="Efeitos Principais" [formControl]="mainEfect">
-  <mat-chip-option *ngFor="let magicEfect of magicEfects" (click)="addNewItem()">{{ magicEfect.name }}</mat-chip-option>
+  <mat-chip-option *ngFor="let magicEfect of effects.allEffects" (click)="addNewItem()">{{ magicEfect.name }}</mat-chip-option>
 </mat-chip-listbox>

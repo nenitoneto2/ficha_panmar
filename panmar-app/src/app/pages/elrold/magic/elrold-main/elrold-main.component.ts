@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Effect } from 'src/app/shared/class/effect';
 import { MagicEffect } from 'src/app/shared/interfaces/magic/magic-effects';
 import { MagicService } from 'src/app/shared/services/magic.service';
 
@@ -9,28 +10,14 @@ import { MagicService } from 'src/app/shared/services/magic.service';
   styleUrls: ['./elrold-main.component.scss']
 })
 export class ElroldMainComponent {
-  public magicEfects:any = [];
-  public magicTypes:any = [];
-  mainEfect = new FormControl(['main']);
-  @Output() newMainEvent = new EventEmitter<MagicEffect>();
+  public effects=new Effect;
+  mainEfect = new FormControl('main');
+  @Output() newMainEvent = new EventEmitter<string>();
 
   addNewItem() {
-    const main =this.magicEfects.filter(x=>x.name===this.mainEfect.value);
-    this.newMainEvent.emit(main);
+    this.newMainEvent.emit(this.mainEfect.value);
   }
   constructor(private magicservice: MagicService,) { 
   }
 
-  ngOnInit() {
-    this.magicservice.getMagicTypes().subscribe(
-      data => {
-        this.magicTypes = data;
-      }
-    );
-    this.magicservice.getMagicEffects().subscribe(
-      data => {
-        this.magicEfects = data;
-      }
-    );
-  }
 }

@@ -19,14 +19,13 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent, data: { header: { title: 'Login', links: [ { name: 'Login', path: 'sign-in' },{ name: 'Registre-se', path: 'register-user' },{ name: 'Esqueçi a senha', path: 'forgot-password' },{ name: 'Verifique sua senha', path: 'verify-email-address' } ] } }},
   { path: 'verify-email-address', component: VerifyEmailComponent,canActivate: [AuthGuard], data: { header: { title: 'Login', links: [ { name: 'Login', path: 'sign-in' },{ name: 'Registre-se', path: 'register-user' },{ name: 'Esqueçi a senha', path: 'forgot-password' },{ name: 'Verifique sua senha', path: 'verify-email-address' } ] } }},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'home', path: 'home' },{ name: 'personagens', path: 'personagens' }, { name: 'wiki', path: 'wiki' }, { name: 'elrold', path: 'elrold' } ] } } },
-  { path: 'personagens', component: PersonagensComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'home', path: 'home' },{ name: 'personagens', path: 'personagens' }, { name: 'wiki', path: 'wiki' }, { name: 'elrold', path: 'elrold' } ] } }, },
+  { path: 'personagens', component: PersonagensComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'home', path: 'home' },{ name: 'personagens', path: 'personagens' }, { name: 'wiki', path: 'wiki' }, { name: 'elrold', path: 'elrold' } ] } } },
+  
   { path: 'personagens/new', component: PersonagemComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'home', path: 'home' },{ name: 'personagens', path: 'personagens' }, { name: 'wiki', path: 'wiki' }, { name: 'elrold', path: 'elrold' } ] } }, },
   { path: 'personagens/:id', component: PersonagemComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'home', path: 'home' },{ name: 'personagens', path: 'personagens' }, { name: 'wiki', path: 'wiki' }, { name: 'elrold', path: 'elrold' } ] } }, },
   { path: 'wiki', component: WikiComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'home', path: 'home' },{ name: 'personagens', path: 'personagens' }, { name: 'wiki', path: 'wiki' }, { name: 'elrold', path: 'elrold' } ] } } },
-  { path: 'elrold', component: ElrondComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'elrold', path: 'elrold' }] } } },
+  { path: 'elrold', component: ElrondComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'home', path: 'home' },{ name: 'personagens', path: 'personagens' }, { name: 'wiki', path: 'wiki' }, { name: 'elrold', path: 'elrold' } ] } } },
   { path: 'table-manager', component: TableManagerComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'home', path: 'home' },{ name: 'personagens', path: 'personagens' }, { name: 'wiki', path: 'wiki' }, { name: 'elrold', path: 'elrold' } ] } }, },
-  
-  
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

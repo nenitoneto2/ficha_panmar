@@ -1,12 +1,12 @@
-import { Duration } from './duration';
+import { MagicDuration } from './magic-duration';
 import { MagicEffect } from './magic-effects';
 import { MagicRange } from './magic-range';
-import { ActionSpeed } from './action-speed';
+import { MagicActionSpeed } from './action-speed';
 
 export interface newMagic {
     main:MagicEffect,
     secondary?:MagicEffect[],
     range:MagicRange[],
-    duration:Duration,
-    actionSpeed: ActionSpeed
+    duration:MagicDuration[],
+    actionSpeed: MagicActionSpeed[]
 }

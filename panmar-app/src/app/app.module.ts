@@ -25,6 +25,7 @@ import { MagicBoxComponent } from './components/magic-box/magic-box.component';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -50,6 +51,7 @@ import { PersonagemItemComponent } from './pages/personagens/personagem-item/per
 import { PersonagemBasisComponent } from './components/personagem-basis/personagem-basis.component';
 import { TableManagerComponent } from './pages/table-manager/table-manager.component';
 import { RPGTableService } from './shared/services/rpg-table.service';
+import { NavHelperComponent } from './components/nav-helper/nav-helper.component';
 
 @NgModule({
   declarations: [
@@ -105,6 +107,7 @@ import { RPGTableService } from './shared/services/rpg-table.service';
     MatBadgeModule,
     MatSliderModule,
     FormsModule,
+    MatListModule,
     ReactiveFormsModule
   ],
   providers: [CharacterService, CharacterDataStorageService, RPGTableService],

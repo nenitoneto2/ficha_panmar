@@ -1,3 +1,26 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$my-primary: mat.define-palette(mat.$indigo-palette, 500);
+$my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent,
+ ),
+ typography: mat.define-typography-config(),
+ density: 0,
+));
+
+// Emit theme-dependent styles for common features used across multiple components.
+@include mat.core-theme($my-theme);
+
+// Emit styles for MatButton based on `$my-theme`. Because the configuration
+// passed to `define-light-theme` omits typography, `button-theme` will not
+// emit any typography styles.
+@include mat.button-theme($my-theme);
 @import '../src/assets/styles/main.scss';
 @import "~bootstrap/dist/css/bootstrap.css";
 @font-face {
@@ -39,8 +62,7 @@ time, mark, audio, video {
     border: 0;
     font-size: 100%;
     font-family: 'classica';
-    vertical-align: baseline;
-    overflow: hidden;
+    display: block;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -72,7 +94,7 @@ h1 {
     padding: 0;
     color: $color-font-primary;
     border: 0;
-    font-size: 400%;
+    font-size: 300%;
     vertical-align: baseline;
 }
 h2 {
@@ -82,7 +104,7 @@ h2 {
     padding: 0;
     color: $color-font-primary;
     border: 0;
-    font-size: 300%;
+    font-size: 250%;
     vertical-align: baseline;
 }
 h3 {
@@ -92,7 +114,7 @@ h3 {
     padding: 0;
     color: $color-font-primary;
     border: 0;
-    font-size: 250%;
+    font-size: 200%;
     vertical-align: baseline;
 }
 h4 {
@@ -102,7 +124,7 @@ h4 {
     padding: 0;
     color: $color-font-primary;
     border: 0;
-    font-size: 200%;
+    font-size: 150%;
     vertical-align: baseline;
 }
 h5 {
@@ -112,7 +134,7 @@ h5 {
     padding: 0;
     color: $color-font-primary;
     border: 0;
-    font-size: 150%;
+    font-size: 125%;
     vertical-align: baseline;
 }
 h6 {

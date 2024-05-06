@@ -1,11 +1,9 @@
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {Component, ElementRef, ViewChild, inject} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {Component, ElementRef, EventEmitter, Output, ViewChild, inject} from '@angular/core';
+import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
+import { ActionSpeed } from 'src/app/shared/class/action-speed';
 
 @Component({
   selector: 'elrold-action-speed',
@@ -14,50 +12,53 @@ import {LiveAnnouncer} from '@angular/cdk/a11y';
 })
 export class ElroldActionSpeedComponent {
   separatorKeysCodes: number[] = [ENTER, COMMA];
-    fruitCtrl = new FormControl('');
-    filteredFruits: Observable<string[]>;
-    fruits: string[] = ['Lemon'];
-    allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+    cActionSpeeds : ActionSpeed = new ActionSpeed;
+    actionSpeed: string[] = [];
+    actionSpeedScale: number[] = [1];
+    allActionSpeed: string[] = this.cActionSpeeds.names();
+    ActionSpeedForm: FormGroup;
   
-    @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
-  
+    @ViewChild('actionSpeedInput') actionSpeedInput: ElementRef<HTMLInputElement>;
+    @Output() newActionSpeedEvent = new EventEmitter<any>();
     announcer = inject(LiveAnnouncer);
   
-    constructor() {
-      this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
-        startWith(null),
-        map((fruit: string | null) => (fruit ? this._filter(fruit) : this.allFruits.slice())),
-      );
+    constructor(private _formBuilder: FormBuilder) {
+      
+      this.ActionSpeedForm = this._formBuilder.group({
+        actionSpeeds: this._formBuilder.array([]) ,
+      })
     }
   
-    add(event: MatChipInputEvent): void {
-      const value = (event.value || '').trim();
-      if (value) {
-        this.fruits.push(value);
-      }
-      event.chipInput!.clear();
-      this.fruitCtrl.setValue(null);
-    }
-  
-    remove(fruit: string): void {
-      const index = this.fruits.indexOf(fruit);
+    remove(actionSpeed: string): void {
+      const index = this.actionSpeed.indexOf(actionSpeed);
   
       if (index >= 0) {
-        this.fruits.splice(index, 1);
-        this.announcer.announce(`Removed ${fruit}`);
+        this.actionSpeed.splice(index, 1);
+        this.actionSpeeds().removeAt(index);
+        this.newActionSpeedEvent.emit(this.actionSpeeds().value);
+        this.announcer.announce(`Removed ${actionSpeed}`);
       }
     }
   
     selected(event: MatAutocompleteSelectedEvent): void {
-      this.fruits.push(event.option.viewValue);
-      this.fruitInput.nativeElement.value = '';
-      this.fruitCtrl.setValue(null);
+      this.actionSpeed.push(event.option.viewValue);
+      this.actionSpeeds().push(this.newActionSpeed(event.option.viewValue));
+      this.actionSpeedInput.nativeElement.value = '';
+      this.newActionSpeedEvent.emit(this.actionSpeeds().value); 
     }
-  
-    private _filter(value: string): string[] {
-      const filterValue = value.toLowerCase();
-  
-      return this.allFruits.filter(fruit => fruit.toLowerCase().includes(filterValue));
+    eventemit() {
+      this.newActionSpeedEvent.emit(this.actionSpeeds().value); 
+    }
+    actionSpeeds(): FormArray {
+      return this.ActionSpeedForm.get("actionSpeeds") as FormArray
+    }
+    newActionSpeed(name:string): FormGroup {
+      return this._formBuilder.group({
+        actionSpeed: name,
+        actionSpeedScale: 1,
+      })
+    }
+    removeEmployee(empIndex:number) {
+      this.actionSpeeds().removeAt(empIndex);
     }
 }
-
