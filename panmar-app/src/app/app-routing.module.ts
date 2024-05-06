@@ -10,6 +10,7 @@ import { WikiComponent } from './pages/wiki/wiki.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { ElrondComponent } from './pages/elrold/elrond.component';
 import { PersonagemComponent } from './pages/personagem/personagem.component';
+import { TableManagerComponent } from './pages/table-manager/table-manager.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -23,6 +24,8 @@ const routes: Routes = [
   { path: 'personagens/:id', component: PersonagemComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'home', path: 'home' },{ name: 'personagens', path: 'personagens' }, { name: 'wiki', path: 'wiki' }, { name: 'elrold', path: 'elrold' } ] } }, },
   { path: 'wiki', component: WikiComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'home', path: 'home' },{ name: 'personagens', path: 'personagens' }, { name: 'wiki', path: 'wiki' }, { name: 'elrold', path: 'elrold' } ] } } },
   { path: 'elrold', component: ElrondComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'home', path: 'home' },{ name: 'personagens', path: 'personagens' }, { name: 'wiki', path: 'wiki' }, { name: 'elrold', path: 'elrold' } ] } } },
+  { path: 'table-manager', component: TableManagerComponent, canActivate: [AuthGuard], data: { header: { title: 'Home', links: [ { name: 'home', path: 'home' },{ name: 'personagens', path: 'personagens' }, { name: 'wiki', path: 'wiki' }, { name: 'elrold', path: 'elrold' } ] } }, },
+
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
