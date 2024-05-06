@@ -1,0 +1,20 @@
+<h1>Create Table</h1>
+<button (click)="OnCreateTable()">Crate New Table</button>
+<hr>
+
+<h1>Get Tables</h1>
+<button (click)="FetchTables()">Fetch Tables</button>
+<hr>
+
+<h1>Available Tables</h1>
+<div *ngFor="let table of activeTables; let i = index">
+    <h4>Master Id {{table.masterId}}</h4>
+    <div *ngFor="let tableId of table.tables">
+        <p >
+            Id {{tableId}}
+            </p>
+            <button (click)="JoinTableAsPlayer(tableId)">Join As Player</button>
+            <button (click)="JoinTableAsMaster(tableId)">Join As Master</button>
+    </div>
+    
+</div>

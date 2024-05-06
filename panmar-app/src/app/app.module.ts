@@ -48,6 +48,8 @@ import { CharacterService } from './shared/services/character.service';
 import { CharacterDataStorageService } from './shared/services/character.data-storage';
 import { PersonagemItemComponent } from './pages/personagens/personagem-item/personagem-item.component';
 import { PersonagemBasisComponent } from './components/personagem-basis/personagem-basis.component';
+import { TableManagerComponent } from './pages/table-manager/table-manager.component';
+import { RPGTableService } from './shared/services/rpg-table.service';
 
 @NgModule({
   declarations: [
@@ -73,7 +75,8 @@ import { PersonagemBasisComponent } from './components/personagem-basis/personag
     ElroldActionSpeedComponent,
     PersonagemComponent,
     PersonagemItemComponent,
-    PersonagemBasisComponent
+    PersonagemBasisComponent,
+    TableManagerComponent
   ],
   imports: [
     BrowserModule,
@@ -104,7 +107,7 @@ import { PersonagemBasisComponent } from './components/personagem-basis/personag
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [CharacterService, CharacterDataStorageService],
+  providers: [CharacterService, CharacterDataStorageService, RPGTableService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
