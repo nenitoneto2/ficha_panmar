@@ -4,7 +4,7 @@ import { CharacterService } from "./character.service";
 import { Character } from "../classes/character/character";
 import { tap } from "rxjs";
 
-const path: string = 'https://pan-mar-development-default-rtdb.firebaseio.com/characters/'
+const path: string = 'https://pan-mar-default-rtdb.firebaseio.com/characters/'
 
 @Injectable()
 export class CharacterDataStorageService{
