@@ -1,14 +1,8 @@
-import { Component, OnInit, StaticClassSansProvider, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, OnInit, StaticClassSansProvider, ViewChild } from '@angular/core';
 import { FormArray, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { PersonagemBasisComponent } from 'src/app/components/personagem-basis/personagem-basis.component';
 import { Character } from 'src/app/shared/classes/character/character';
-import { DeathSaves } from 'src/app/shared/classes/character/death-saves';
-import { Meridians } from 'src/app/shared/classes/character/meridians/meridians';
-import { Skills } from 'src/app/shared/classes/character/skills/skills';
-import { Stats } from 'src/app/shared/classes/character/stats/stats';
-import { Health } from 'src/app/shared/classes/character/vitals/health';
-import { Mana } from 'src/app/shared/classes/character/vitals/mana';
 
 import { CharacterDataStorageService } from 'src/app/shared/services/character.data-storage';
 import { CharacterService } from 'src/app/shared/services/character.service';
@@ -18,9 +12,9 @@ import { CharacterService } from 'src/app/shared/services/character.service';
   templateUrl: './personagem.component.html',
   styleUrls: ['./personagem.component.scss']
 })
-export class PersonagemComponent implements OnInit{
+export class PersonagemComponent implements OnInit, AfterViewChecked{
   @ViewChild('f', { static: false }) slForm: NgForm;
-  @ViewChild('characterBasis') characterBasis
+  @ViewChild('characterBasis') characterBasis: PersonagemBasisComponent
   character: Character
   characterForm: FormGroup
 
@@ -28,7 +22,8 @@ export class PersonagemComponent implements OnInit{
   isNewCharacter = false
 
   constructor(private route: ActivatedRoute, private charService: CharacterService, 
-    private charDataStoreage: CharacterDataStorageService){
+    private charDataStoreage: CharacterDataStorageService,
+    private router: Router,){
     
   }
 
@@ -40,6 +35,10 @@ export class PersonagemComponent implements OnInit{
       this.initCharacter()
     })
     
+    
+  }
+
+  ngAfterViewChecked(): void {
     this.characterBasis.characterName = this.character.name
     this.characterBasis.formLevelRank = this.character.rank
     this.characterBasis.characterSpecie = this.character.species
@@ -56,7 +55,16 @@ export class PersonagemComponent implements OnInit{
   }
 
   onSubmit(){
-    this.charDataStoreage.storeCharacters()
+    if(this.isNewCharacter){
+      this.charService.AddCharacter(this.character);
+      this.charDataStoreage.storeCharacters()
+    this.router.navigate(['personagens']);
+    }
+    else{
+      this.charService.UpdateCharacter(this.id, this.character)
+      this.charDataStoreage.storeCharacters()
+    }
+    
   }
 
   

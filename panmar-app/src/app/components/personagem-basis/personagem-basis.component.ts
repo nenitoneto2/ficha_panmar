@@ -10,15 +10,15 @@ import { Species } from 'src/app/shared/enums/specie';
   styleUrls: ['./personagem-basis.component.scss']
 })
 export class PersonagemBasisComponent {
-  characterName: string
+  characterName: string = ""
   leveledRanks = Object.values(LeveledRank)
-  formLevelRank : LeveledRank;
+  formLevelRank : LeveledRank = LeveledRank.Base1;
   species = Object.values(Species)
-  characterSpecie: Species
+  characterSpecie: Species = Species.Human
   hanaku = 'Hanaku'
   magicElements = Object.values(Elements)
-  primaryElement: Elements
-  secondaryElement: Elements
+  primaryElement: Elements = Elements.None
+  secondaryElement: Elements = Elements.None
 
   @Output() onValueChange = new Subject<{characterName: string, formLevelRank: LeveledRank, 
     characterSpecie: Species, primaryElement: Elements, secondaryElement: Elements}>()

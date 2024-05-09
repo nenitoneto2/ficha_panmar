@@ -1,36 +1,35 @@
 <div class="row">
     <label for="name">Nome</label>
-    <input type="text"
-    id="name"
-    formControlName="name" [(ngModel)]="characterName"
+    <input type="text" [(ngModel)]="characterName"
     (input)="OnValueChange()">
 </div>
 
 <div class="row">
     <label for="rank">Rank</label>
-    <select name="rank" id="rank" formArrayName="rank" [(ngModel)]="formLevelRank" (change)="OnValueChange()">
+    <select name="rank" [(ngModel)]="formLevelRank" (change)="OnValueChange()">
         <option *ngFor="let rank of leveledRanks" [value]="rank">{{rank}}</option>
     </select>
 </div>
 
 <div class="row">
     <label for="species">Especie</label>
-    <select name="species" id="species" formArrayName="species" [(ngModel)]="characterSpecie" (change)="OnValueChange()">
+    <select name="species" [(ngModel)]="characterSpecie" (change)="OnValueChange()">
         <option *ngFor="let specie of species" [value]="specie">{{specie}}</option>
     </select>
 </div>
 
 <div class="row">
     <label for="primaryElement">Elemento</label>
-    <select name="primaryElement" id="primaryElement" formArrayName="primaryElement" [(ngModel)]="primaryElement" (change)="OnValueChange()">
+    <select name="primaryElement" [(ngModel)]="primaryElement" (change)="OnValueChange()">
         <option *ngFor="let element of magicElements" [value]="element">{{element}}</option>
     </select>
 
     <div *ngIf="characterSpecie.toString() === hanaku">
         <label for="secondaryElement">Elemento 2</label>
-        <select name="secondaryElement" id="secondaryElement" formArrayName="secondaryElement"
+        <select name="secondaryElement"
         [(ngModel)]="secondaryElement" (change)="OnValueChange()">
             <option *ngFor="let element of magicElements" [value]="element">{{element}}</option>
         </select>
     </div>
 </div>
+
