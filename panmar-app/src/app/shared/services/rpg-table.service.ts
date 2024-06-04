@@ -16,6 +16,7 @@ export class RPGTableService{
     tables: [{masterId: string, tables: string[]}]
     OnTablesUpdated = new Subject<[{masterId: string, tables: string[]}]>()
     
+    
 
     constructor(private http: HttpClient){
 
@@ -31,7 +32,7 @@ export class RPGTableService{
         let masterObj = {
             id: "googleId"
         }
-        this.http.post(this.path+this.createTablePath, JSON.stringify(masterObj), {headers})
+        this.http.post(this.path+this.createTablePath, JSON.stringify(masterObj), {headers, responseType: 'text'})
         .subscribe(response => {console.log("Mesa: " + response)});
         
     }
@@ -44,80 +45,65 @@ export class RPGTableService{
     }
 
     public TestNotifications(tableId: string){
-        this.http.get(this.path + "teste" + "?id=" + tableId).subscribe()
+        this.http.get(this.path + "teste" + "?id=" + tableId,  { responseType: 'text' }).subscribe()
     }
 
-    public JoinTableAsPlayer(tableId: string){
-        console.log("Join Table")
+    public JoinTableAsPlayer(tableId: string) {
+        console.log("Joining Table as Player");
 
         const headers = new HttpHeaders({
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json"
         });
 
-        let playerObj = {
+        const playerObj = {
             initiative: 0,
             playerId: "Tplayer1"
-        }
-
-        this.http.put(this.path + this.playerJoinTablePath + "?id=" + tableId, JSON.stringify(playerObj),
-        {headers}).subscribe(response => {
-            
-        }, 
-        error => {console.error("Erro: " + error)});
-
-        const url = this.path + this.playersEventsPath+ "?id=" + tableId;
-
-        return new Observable<any>((observer) => {
-        const eventSource = new EventSource(url);
-
-        eventSource.onmessage = (event) => {
-            console.log("EVENT RECEIVED")
-            const eventData = JSON.parse(event.data);
-            observer.next(eventData);
         };
 
-        eventSource.onerror = (error) => {
-            observer.error('Erro de comunicação com o servidor');
-        };
+        this.http.put(this.path + this.playerJoinTablePath + "?id=" + tableId, JSON.stringify(playerObj), { headers })
+            .subscribe(response => {
+                console.log("Player joined successfully");
+            }, error => {
+                console.error("Erro: " + error);
+            });
 
-        return () => {
-            eventSource.close();
-        };
-        });
+        this.subscribeToSse(this.path + this.playersEventsPath + "?id=" + tableId);
     }
 
-    public JoinTableAsMaster(tableId: string){
-        console.log("Join Table")
+    public JoinTableAsMaster(tableId: string) {
+        console.log("Joining Table as Master");
 
         const headers = new HttpHeaders({
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json"
         });
 
-        let masterObj = {
-            id: "googleId"
+        const masterObj = { id: "googleId" };
+
+        this.http.put(this.path + this.masterJoinTablePath + "?id=" + tableId, JSON.stringify(masterObj), { headers })
+            .subscribe(response => {
+                console.log("Master joined successfully");
+            });
+
+        this.subscribeToSse(this.path + this.masterEventsPath + "?id=" + tableId);
+    }
+
+    private subscribeToSse(url: string) {
+        console.log("Subscribing to: " + url)
+        
+        var eventSource = new EventSource(url);
+
+        console.log("starting....")
+        window.onbeforeunload = () => {
+            eventSource.close();
         }
 
-        this.http.put(this.path + this.masterJoinTablePath + "?id=" + tableId, JSON.stringify(masterObj),
-        {headers})
-
-        const url = this.path + this.masterEventsPath + "?id=" + tableId;
-
-        return new Observable<any>((observer) => {
-        const eventSource = new EventSource(url);
-
-        eventSource.onmessage = (event) => {
-            const eventData = JSON.parse(event.data);
-            observer.next(eventData);
+        eventSource.onmessage = (message) => {
+            console.log(message);
         };
 
-        eventSource.onerror = (error) => {
-            observer.error('Erro de comunicação com o servidor');
-        };
-
-        return () => {
-            eventSource.close();
-        };
-        });
+        eventSource.addEventListener("notifications", (event) => {
+            console.log(event.data);
+        })
     }
 
     private UpdateAvailableTables(Id: string, tablesIds: string[]){
@@ -142,3 +128,8 @@ export class RPGTableService{
         this.OnTablesUpdated.next(this.tables)
     }
 }
+
+export interface MessageData {
+    status: string;
+    message: string;
+  }

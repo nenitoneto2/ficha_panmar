@@ -34,26 +34,11 @@ export class TableManagerComponent implements OnInit, OnDestroy {
   }
 
   JoinTableAsPlayer(tableId: string){
-    this.playersEventSubscritions = this.rpgTableService.JoinTableAsPlayer(tableId).subscribe(
-      {
-        next: (data) => {
-          console.log('data from event source', data);
-        },
-        error: (error) => {
-          console.log('event source has an error', error);
-        },
-      });
+    this.rpgTableService.JoinTableAsPlayer(tableId)
   }
 
   JoinTableAsMaster(tableId: string){
-    this.masterEventSubscritions = this.rpgTableService.JoinTableAsMaster(tableId).subscribe((data) => {
-      // Lógica para lidar com os dados recebidos do servidor
-      console.log('Dados recebidos:', data);
-    },
-    (error) => {
-      // Lógica para lidar com erros
-      console.error('Erro:', error);
-    })
+    this.rpgTableService.JoinTableAsMaster(tableId)
   }
 
   TestNotification(tableId: string){
