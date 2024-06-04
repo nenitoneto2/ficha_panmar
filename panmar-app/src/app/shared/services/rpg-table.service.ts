@@ -43,6 +43,10 @@ export class RPGTableService{
         error => {console.error("Erro: " + error)});
     }
 
+    public TestNotifications(tableId: string){
+        this.http.get(this.path + "teste" + "?id=" + tableId).subscribe()
+    }
+
     public JoinTableAsPlayer(tableId: string){
         console.log("Join Table")
 
@@ -67,6 +71,7 @@ export class RPGTableService{
         const eventSource = new EventSource(url);
 
         eventSource.onmessage = (event) => {
+            console.log("EVENT RECEIVED")
             const eventData = JSON.parse(event.data);
             observer.next(eventData);
         };

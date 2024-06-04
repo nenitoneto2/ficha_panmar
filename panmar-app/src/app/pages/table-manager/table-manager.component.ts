@@ -55,4 +55,8 @@ export class TableManagerComponent implements OnInit, OnDestroy {
       console.error('Erro:', error);
     })
   }
+
+  TestNotification(tableId: string){
+    this.rpgTableService.TestNotifications(tableId);
+  }
 }
