@@ -1,0 +1,17 @@
+<div *ngIf="player">
+    <h3>Player Information</h3>
+    <p><strong>Owner:</strong> {{ player.owner }}</p>
+    <p><strong>Initiative:</strong> {{ player.initiative }}</p>
+    <p><strong>Current HP:</strong> {{ player.currentHP }}</p>
+    <p><strong>Max HP:</strong> {{ player.maxHP }}</p>
+    <p><strong>Movement:</strong> {{ player.movement }}</p>
+    <p><strong>Attack Power:</strong> {{ player.attackPower }}</p>
+    <p><strong>Defense Power:</strong> {{ player.defPower }}</p>
+    <p><strong>Player ID:</strong> {{ player.playerId }}</p>
+    <p><Strong>Target: </Strong> {{currentTarget}}</p>
+    <div *ngFor="let target of targets">
+      <button (click)="SetTarget(target.playerId)">Target {{target.playerId}}</button>
+    </div>
+
+    <app-request-action-component (OnActionRequested)="RequestAction($event)"></app-request-action-component>
+  </div>

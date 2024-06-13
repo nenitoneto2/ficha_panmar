@@ -1,0 +1,29 @@
+
+    <div *ngFor="let player of players">
+        <h3>Player Information of {{player.playerId}}</h3>
+        <p><strong>Owner:</strong> {{ player.owner }}</p>
+        <p><strong>Initiative:</strong> {{ player.initiative }}</p>
+        <p><strong>Current HP:</strong> {{ player.currentHP }}</p>
+        <p><strong>Max HP:</strong> {{ player.maxHP }}</p>
+        <p><strong>Movement:</strong> {{ player.movement }}</p>
+        <p><strong>Attack Power:</strong> {{ player.attackPower }}</p>
+        <p><strong>Defense Power:</strong> {{ player.defPower }}</p>
+        <p><strong>Player ID:</strong> {{ player.playerId }}</p>
+        <p><Strong>Target: </Strong> {{currentTarget}}</p>
+    
+        <button (click)="SetTarget(player.playerId)">Set As Actions Target</button>
+        <button (click)="SetOwner(player.playerId)"> Set As Action Owner</button>
+    </div>
+
+
+
+    <h4>Action Info</h4>
+    <P>Target - {{actionTarget}} || Owner - {{actionOwner}}</P>
+    <app-request-action-component (OnActionRequested)="RequestAction($event)"></app-request-action-component>
+    
+    <h5>Active Actions</h5>
+    <div *ngFor="let action of actions">
+        <app-action-component [action]="action"></app-action-component>
+    </div>
+
+>

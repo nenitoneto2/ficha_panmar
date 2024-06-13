@@ -1,0 +1,13 @@
+<h1>Table master</h1>
+<div *ngIf="joinedAsMaster">
+    <app-master-info-component [players]="table.players" [actions]="table.actions"></app-master-info-component>
+</div>
+
+<h1>Table player</h1>
+<div *ngIf="joinedAsPlayer">
+    <div *ngFor="let player of table.players">
+        <div *ngIf="myEmail === player.owner">
+            <app-player-info-component [player]="player" [targets]="table.players"></app-player-info-component>
+        </div>
+    </div>
+</div>

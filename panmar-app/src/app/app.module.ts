@@ -52,6 +52,11 @@ import { PersonagemItemComponent } from './pages/personagens/personagem-item/per
 import { PersonagemBasisComponent } from './components/personagem-basis/personagem-basis.component';
 import { TableManagerComponent } from './pages/table-manager/table-manager.component';
 import { RPGTableService } from './shared/services/rpg-table.service';
+import { PlayerInfoComponentComponent } from './pages/table-manager/subcomponent/player-info-component/player-info-component.component';
+import { MasterInfoComponentComponent } from './pages/table-manager/subcomponent/master-info-component/master-info-component.component';
+import { RequestActionComponentComponent } from './pages/table-manager/subcomponent/request-action-component/request-action-component.component';
+import { ActionComponentComponent } from './pages/table-manager/subcomponent/action-component/action-component.component';
+import { TableInfoComponent } from './pages/table-manager/subcomponent/table-info/table-info.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +84,12 @@ import { RPGTableService } from './shared/services/rpg-table.service';
     PersonagemComponent,
     PersonagemItemComponent,
     PersonagemBasisComponent,
-    TableManagerComponent
+    TableManagerComponent,
+    PlayerInfoComponentComponent,
+    MasterInfoComponentComponent,
+    RequestActionComponentComponent,
+    ActionComponentComponent,
+    TableInfoComponent
   ],
   imports: [
     BrowserModule,
